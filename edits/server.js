@@ -1,4 +1,4 @@
-// Standalone Dope Edits server (port 5190). Clip Studio can mount the same router instead; see README.md.
+// Standalone Dope Edits server (port 5190). HBA Clips can mount the same router instead; see README.md.
 // Run only one of the two at a time: both would work the same job queue on disk.
 import path from "node:path";
 import dotenv from "dotenv";

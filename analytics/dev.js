@@ -1,6 +1,6 @@
-// Dev server for the Analytics tab (port 5195). Serves Clip Studio's page from disk with the Analytics nav
+// Dev server for the Analytics tab (port 5195). Serves HBA Clips's page from disk with the Analytics nav
 // link and route patched in (the same hooks ENGINE adds for real, see analytics/README.md), mounts this
-// router, and proxies everything else to the running Clip Studio server on 5173, which it never restarts.
+// router, and proxies everything else to the running HBA Clips server on 5173, which it never restarts.
 //   node analytics/dev.js   → http://localhost:5195/#/analytics
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -64,7 +64,7 @@ app.use(async (req, res) => {
     if (upstream.body) Readable.fromWeb(upstream.body).pipe(res);
     else res.end();
   } catch (err) {
-    res.status(502).type("text").send(`Clip Studio isn't reachable at ${UPSTREAM}: ${err.message}`);
+    res.status(502).type("text").send(`HBA Clips isn't reachable at ${UPSTREAM}: ${err.message}`);
   }
 });
 

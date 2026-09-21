@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Clip Studio for Claude: an MCP server (stdio) so Claude Desktop or Claude Code can run the clipping workflow in
+// HBA Clips for Claude: an MCP server (stdio) so Claude Desktop or Claude Code can run the clipping workflow in
 // a chat — add a video, read the transcript, propose clips, get approval, render, check the renders and schedule
 // posts. It's a thin layer over the app's own API (http://localhost:5173 by default), so everything Claude does
 // shows up in the app and the other way round. No dependencies: the protocol is JSON-RPC over stdin/stdout.
@@ -21,7 +21,7 @@ async function api(method, route, body) {
       body: body instanceof FormData ? body : body ? JSON.stringify(body) : undefined,
     });
   } catch {
-    throw new Error(`Clip Studio isn't running at ${BASE}. Start it (node server.js in the app folder) and try again.`);
+    throw new Error(`HBA Clips isn't running at ${BASE}. Start it (node server.js in the app folder) and try again.`);
   }
   const text = await res.text();
   let data;
@@ -30,7 +30,7 @@ async function api(method, route, body) {
   } catch {
     data = { text };
   }
-  if (!res.ok) throw new Error(data.error || `Clip Studio answered ${res.status}`);
+  if (!res.ok) throw new Error(data.error || `HBA Clips answered ${res.status}`);
   return data;
 }
 
@@ -81,14 +81,14 @@ const TOOLS = [
   {
     name: "studio_status",
     description:
-      "Start here. Without project_id: every project in Clip Studio (id, name, status, clip counts). With project_id: that project's clips — title, range, score, whether approved, render status and QA. Call it to find out where things stand before doing anything else.",
+      "Start here. Without project_id: every project in HBA Clips (id, name, status, clip counts). With project_id: that project's clips — title, range, score, whether approved, render status and QA. Call it to find out where things stand before doing anything else.",
     inputSchema: { type: "object", properties: { project_id: { type: "string" } } },
     run: async ({ project_id }) => (project_id ? projectView(project_id) : api("GET", "/api/projects")),
   },
   {
     name: "add_video",
     description:
-      "Add a video to Clip Studio from a file on this computer (path) or a YouTube/web link (url). It gets a working copy, cleaned audio and a local transcript. With auto_pick false (the default here) it stops after transcription so you can read the transcript and propose clips yourself; with auto_pick true the app's own picker chooses clips. Returns the project id right away — use wait_for until status is ready.",
+      "Add a video to HBA Clips from a file on this computer (path) or a YouTube/web link (url). It gets a working copy, cleaned audio and a local transcript. With auto_pick false (the default here) it stops after transcription so you can read the transcript and propose clips yourself; with auto_pick true the app's own picker chooses clips. Returns the project id right away — use wait_for until status is ready.",
     inputSchema: {
       type: "object",
       properties: {
@@ -156,7 +156,7 @@ const TOOLS = [
   {
     name: "propose_clips",
     description:
-      "Add your clip picks to a project as unapproved clips (nothing renders). Before calling this, show the user your picks as a numbered list — timestamps, length, the hook, the payoff, why it will perform, a title — and get their OK. Each pick: start/end in seconds; a premium title (no emoji, no ALL-CAPS, no clickbait, no profanity); payoff (what the viewer gets by the end, 5+ words); standalone (only if the first word leans on earlier context, say why it still works); reasoning; optional cut [{start,end}] ranges to drop inside the clip (rambles, restarts, asides); optional hook {start,end} — a complete strong sentence from elsewhere in the video to open on; optional score 1–100. Aim for 30–42s after cuts, never over 60. Clip Studio then removes filler, false starts, dead air and any sentence with a curse word. A list with problems is rejected with every problem named — fix them and call again. replace: true swaps out unapproved, unrendered clips.",
+      "Add your clip picks to a project as unapproved clips (nothing renders). Before calling this, show the user your picks as a numbered list — timestamps, length, the hook, the payoff, why it will perform, a title — and get their OK. Each pick: start/end in seconds; a premium title (no emoji, no ALL-CAPS, no clickbait, no profanity); payoff (what the viewer gets by the end, 5+ words); standalone (only if the first word leans on earlier context, say why it still works); reasoning; optional cut [{start,end}] ranges to drop inside the clip (rambles, restarts, asides); optional hook {start,end} — a complete strong sentence from elsewhere in the video to open on; optional score 1–100. Aim for 30–42s after cuts, never over 60. HBA Clips then removes filler, false starts, dead air and any sentence with a curse word. A list with problems is rejected with every problem named — fix them and call again. replace: true swaps out unapproved, unrendered clips.",
     inputSchema: {
       type: "object",
       required: ["project_id", "picks"],
@@ -289,9 +289,9 @@ const TOOLS = [
 const PROMPTS = [
   {
     name: "clip_workflow",
-    description: "Turn a podcast or long video into premium short clips with Clip Studio, step by step with approval before rendering.",
+    description: "Turn a podcast or long video into premium short clips with HBA Clips, step by step with approval before rendering.",
     arguments: [{ name: "video", description: "File path or link to the episode", required: false }],
-    text: (video) => `You're running Clip Studio for a premium creator brand. Core audience: healthcare professionals (doctors, chiropractors, physical therapists); growing into lifestyle, which sells in any niche — so strong lifestyle and personal moments are as clip-worthy as clinical or business lessons.
+    text: (video) => `You're running HBA Clips for a premium creator brand. Core audience: healthcare professionals (doctors, chiropractors, physical therapists); growing into lifestyle, which sells in any niche — so strong lifestyle and personal moments are as clip-worthy as clinical or business lessons.
 ${video ? `The video: ${video}\n` : ""}
 1. studio_status to see what's there. If the video isn't in yet, add_video (auto_pick false), then wait_for until ready, with a one-line update each time.
 2. read_transcript for the whole episode (follow \`more\` until done). Map the topics silently.
@@ -318,7 +318,7 @@ async function onMessage(msg) {
         capabilities: { tools: {}, prompts: {} },
         serverInfo: { name: "clip-studio", version: "1.0.0" },
         instructions:
-          "Clip Studio turns long videos into premium vertical clips. Call studio_status first. Never render without the user's approval of the picks, and never schedule posts without explicit confirmation. The clip_workflow prompt has the full process.",
+          "HBA Clips turns long videos into premium vertical clips. Call studio_status first. Never render without the user's approval of the picks, and never schedule posts without explicit confirmation. The clip_workflow prompt has the full process.",
       });
     case "ping":
       return result(id, {});

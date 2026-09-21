@@ -61,7 +61,7 @@ export async function deleteEdit(id) {
   await fs.rm(editDir(id), { recursive: true, force: true });
 }
 
-/** Where a source's media lives: uploaded into the edit, or referenced from a Clip Studio project. */
+/** Where a source's media lives: uploaded into the edit, or referenced from a HBA Clips project. */
 export function sourcePath(edit, source) {
   return path.isAbsolute(source.file) ? source.file : path.join(editDir(edit.id), source.file);
 }

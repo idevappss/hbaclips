@@ -1,5 +1,5 @@
-// Dev server for the Music Channel (port 5191). Serves Clip Studio's page with the drop-in added and proxies
-// everything else to the running Clip Studio server, so the Study prompt works before ENGINE mounts it.
+// Dev server for the Music Channel (port 5191). Serves HBA Clips's page with the drop-in added and proxies
+// everything else to the running HBA Clips server, so the Study prompt works before ENGINE mounts it.
 //   node music/dev.js   → http://localhost:5191/#/study
 import fs from "node:fs/promises";
 import path from "node:path";
@@ -13,7 +13,7 @@ dotenv.config({ path: path.join(ROOT, ".env"), quiet: true });
 const PORT = Number(process.env.MUSIC_PORT) || 5191;
 const UPSTREAM = process.env.CLIP_STUDIO_URL || "http://localhost:5173";
 
-// Study data lives in the Clip Studio process, which persists every change right away; read it from disk here.
+// Study data lives in the HBA Clips process, which persists every change right away; read it from disk here.
 const { router } = createMusicChannel({
   loadStudy: async () => JSON.parse(await fs.readFile(path.join(ROOT, "data", "study.json"), "utf8")),
 });
@@ -50,7 +50,7 @@ app.use(async (req, res) => {
     if (upstream.body) Readable.fromWeb(upstream.body).pipe(res);
     else res.end();
   } catch (err) {
-    res.status(502).type("text").send(`Clip Studio isn't reachable at ${UPSTREAM}: ${err.message}`);
+    res.status(502).type("text").send(`HBA Clips isn't reachable at ${UPSTREAM}: ${err.message}`);
   }
 });
 

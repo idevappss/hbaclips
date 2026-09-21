@@ -104,7 +104,7 @@ function renderClips() {
   const rows = [];
   let n = 0;
   const letter = () => String.fromCharCode(65 + n++);
-  for (const p of state.projects || []) if (state.projectIds.has(p.id)) rows.push(`<li><span class="tag">${letter()}</span><span class="name">${esc(p.name)}</span><span class="size">${fmtDur(p.duration)} · Clip Studio</span><button class="x" type="button" data-project="${p.id}" aria-label="Remove">×</button></li>`);
+  for (const p of state.projects || []) if (state.projectIds.has(p.id)) rows.push(`<li><span class="tag">${letter()}</span><span class="name">${esc(p.name)}</span><span class="size">${fmtDur(p.duration)} · HBA Clips</span><button class="x" type="button" data-project="${p.id}" aria-label="Remove">×</button></li>`);
   state.clips.forEach((f, i) => rows.push(`<li><span class="tag">${letter()}</span><span class="name">${esc(f.name)}</span><span class="size">${fmtSize(f.size)}</span><button class="x" type="button" data-clip="${i}" aria-label="Remove">×</button></li>`));
   $("#clip-list").innerHTML = rows.join("");
   $("#drop-clips").classList.toggle("has", rows.length > 0);
@@ -170,7 +170,7 @@ function renderLibrary() {
   if (lib.hidden || !state.projects) return;
   lib.innerHTML = state.projects.length
     ? state.projects.map((p) => `<label><input type="checkbox" data-id="${p.id}" ${state.projectIds.has(p.id) ? "checked" : ""}/><span>${esc(p.name)}</span><small>${fmtDur(p.duration)}${p.hasTranscript ? " · transcript" : ""}</small></label>`).join("")
-    : `<small>No Clip Studio videos yet.</small>`;
+    : `<small>No HBA Clips videos yet.</small>`;
 }
 $("#library").addEventListener("change", (e) => {
   const id = e.target.dataset.id;

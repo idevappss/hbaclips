@@ -1,6 +1,6 @@
-# Instagram for Clip Studio
+# Instagram for HBA Clips
 
-Posts scheduled clips to your Instagram Business or Creator accounts as Reels. Clip Studio's Scheduler decides *when*. This module handles *how*:
+Posts scheduled clips to your Instagram Business or Creator accounts as Reels. HBA Clips's Scheduler decides *when*. This module handles *how*:
 
 - connecting accounts
 - uploading and publishing
@@ -46,4 +46,4 @@ IG_REDIRECT_URI=https://<your-host>/api/integrations/instagram/oauth/callback
 - **Security:** whoever can reach the server can post to your accounts, so keep it on localhost or put auth in front of it before exposing it.
 - **Tests:** `node --test instagram/test/`
 
-The integration contract with Clip Studio is in [`shared/CONTRACT.md`](../shared/CONTRACT.md).
+The integration contract with HBA Clips is in [`shared/CONTRACT.md`](../shared/CONTRACT.md).

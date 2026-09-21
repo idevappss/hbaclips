@@ -1,4 +1,4 @@
-# Clip Studio
+# HBA Clips
 
 Turn any long video into posts: captioned talking clips with hook titles, beat-synced "dope edits" of the best-looking moments, and a stack of titles and hooks — then schedule them to your accounts.
 

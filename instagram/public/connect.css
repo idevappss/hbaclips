@@ -1,4 +1,4 @@
-/* Instagram connect page. Builds on Clip Studio's /styles.css tokens, with fallbacks so it stands alone. */
+/* Instagram connect page. Builds on HBA Clips's /styles.css tokens, with fallbacks so it stands alone. */
 .ig { max-width: 860px; margin: 0 auto; padding: 0 32px 96px; }
 .ig-back { font-size: 13.5px; color: var(--muted, #8d8d98); }
 .ig-back:hover { color: var(--text, #f3f3f5); }

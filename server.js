@@ -1522,6 +1522,6 @@ await editsPlanner.start(); // clears planning jobs interrupted by a restart
 startChannelWatch(importChannelVideo);
 
 app.listen(PORT, () => {
-  console.log(`\n  Clip Studio → http://localhost:${PORT}`);
+  console.log(`\n  HBA Clips → http://localhost:${PORT}`);
   console.log(`  Clip analysis: ${hasClaudeKey() ? "Claude (claude-opus-5)" : "demo heuristic — add ANTHROPIC_API_KEY to .env for Claude"}\n`);
 });

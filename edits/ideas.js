@@ -456,7 +456,7 @@ function templateStyle(ready, feedback) {
 // What the director gets
 
 /**
- * What the creator likes in the videos they study (Clip Studio's Study tab, data/study.json, active profile).
+ * What the creator likes in the videos they study (HBA Clips's Study tab, data/study.json, active profile).
  * Read from disk each time rather than through lib/study.js, which caches per process.
  */
 async function studyGuidance() {

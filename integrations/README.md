@@ -2,7 +2,7 @@
 
 Owned by the **APIs** session. Keys themselves live in the root `.env` (template: `.env.example`).
 
-This module adds an **Integrations page** that shows whether the Claude key works and roughly how many **Claude credits are left**. It also provides a small credits chip for Clip Studio's top bar.
+This module adds an **Integrations page** that shows whether the Claude key works and roughly how many **Claude credits are left**. It also provides a small credits chip for HBA Clips's top bar.
 
 ## How "credits left" works
 

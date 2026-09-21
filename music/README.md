@@ -1,6 +1,6 @@
 # Music Channel
 
-Every time you study a video, Clip Studio asks **"Save this sound?"**. Saved sounds go into the shared Sounds library, so you can reuse them on your next clip or Dope edit. Owned by the **MUSIC** session.
+Every time you study a video, HBA Clips asks **"Save this sound?"**. Saved sounds go into the shared Sounds library, so you can reuse them on your next clip or Dope edit. Owned by the **MUSIC** session.
 
 ```
 Study card ─► "Save this sound?" ─► yt-dlp (links) / study upload ─► ffmpeg → AAC ─► lib/sounds.js addTrack(source: "study")

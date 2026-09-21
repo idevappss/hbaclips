@@ -1,6 +1,6 @@
 # Creator models: Dom Iacovone, Brez, Jeremy Haynes
 
-The creator wants every uploaded video turned into shorts that look, read and think like these three accounts, adapted to their niche: **doctors, chiropractors, physical therapists and lifestyle**. This file is the study (what each account actually does, measured where possible) and the spec for replicating it in Clip Studio.
+The creator wants every uploaded video turned into shorts that look, read and think like these three accounts, adapted to their niche: **doctors, chiropractors, physical therapists and lifestyle**. This file is the study (what each account actually does, measured where possible) and the spec for replicating it in HBA Clips.
 
 Studied 2026-09-11 by the Dope Clips session. Sources: public metadata for the latest 40 YouTube Shorts per channel (titles, durations, views, likes, dates), the latest 12 Instagram reels' post captions, and frames watched in the browser. No videos were downloaded yet, so colors, sizes and positions are read off screenshots and marked ≈. See "Still to measure".
 

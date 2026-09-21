@@ -89,7 +89,7 @@ Resolved additions:
 
 | Field | Meaning |
 |---|---|
-| `projectId` | Clip Studio project of the source, or `null` |
+| `projectId` | HBA Clips project of the source, or `null` |
 | `timeline` | `{ start: slotStart − pre, duration: length }` |
 | `sourceWindow` | `{ in, out }` source seconds the shot reads |
 | `speedSegments[]` | `parts` on the timeline: `{ timelineStart, duration, sourceStart, rate, reverse, freeze }` |
