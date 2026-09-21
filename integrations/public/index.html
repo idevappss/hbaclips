@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integrations · Clip Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 96px; }
+      .back { color: var(--muted); font-size: 14px; }
+      .back:hover { color: var(--text); }
+      h1 { font-size: 30px; letter-spacing: -0.02em; margin: 14px 0 6px; }
+      .lede { color: var(--muted); margin: 0 0 28px; }
+      code { font-size: 0.92em; padding: 1px 6px; border-radius: 6px; background: var(--surface-2); }
+      .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; margin-bottom: 18px; }
+      .card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+      .card h2 { font-size: 18px; margin: 0; }
+      .pill { display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 12px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); font-size: 13px; color: var(--muted); white-space: nowrap; }
+      .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--faint); }
+      .pill.ok::before { background: var(--positive, #34d399); box-shadow: 0 0 8px var(--positive, #34d399); }
+      .pill.bad { color: var(--danger); }
+      .pill.bad::before { background: var(--danger); }
+      .banner { border-radius: 14px; padding: 12px 16px; margin-bottom: 20px; font-size: 14px; background: color-mix(in srgb, var(--danger) 12%, transparent); border: 1px solid color-mix(in srgb, var(--danger) 35%, transparent); }
+      .credits { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 24px; }
+      .amount { font-size: 52px; font-weight: 650; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+      .amount.low { color: var(--warn); }
+      .amount.out { color: var(--danger); }
+      .amount-label { color: var(--muted); font-size: 14px; margin-top: 8px; }
+      .bar { height: 8px; border-radius: 999px; background: var(--surface-3); overflow: hidden; margin: 22px 0 10px; }
+      .bar > span { display: block; height: 100%; border-radius: inherit; background: var(--accent); transition: width 0.4s; }
+      .bar.low > span { background: var(--warn); }
+      .meta { color: var(--muted); font-size: 13.5px; }
+      .balance { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
+      .balance label { width: 100%; font-size: 14px; color: var(--text-2); }
+      .money { display: flex; align-items: center; height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--line-2); background: var(--surface-2); color: var(--muted); }
+      .money:focus-within { border-color: var(--line-3, var(--accent)); }
+      .money input { width: 110px; padding-left: 4px; border: 0; outline: 0; background: none; color: var(--text); font: inherit; font-variant-numeric: tabular-nums; }
+      .btn-primary { background: var(--primary, var(--accent)); border-color: var(--primary, var(--accent)); color: var(--primary-ink, var(--accent-ink)); }
+      .btn-primary:hover { background: var(--primary-hover, var(--accent-hover)); }
+      .how { color: var(--faint); font-size: 13px; margin: 14px 0 0; max-width: 64ch; }
+      h3 { margin: 28px 0 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+      .table-scroll { overflow-x: auto; }
+      table { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+      th, td { padding: 9px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+      th { color: var(--faint); font-weight: 500; }
+      th.num, td.num { text-align: right; }
+      tr:last-child td { border-bottom: 0; }
+      .empty { margin: 0; color: var(--faint); font-size: 14px; }
+      .row-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+      .row-link p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+      @media (max-width: 600px) { .amount { font-size: 42px; } .card { padding: 20px; } }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <a class="back" href="/">← Clip Studio</a>
+      <h1>Integrations</h1>
+      <p class="lede">The services this app connects to. Keys live in <code>.env</code> in the app folder; restart the app after changing one.</p>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>Claude</h2>
+          <span class="pill" id="key-pill">Checking key…</span>
+        </div>
+        <div class="banner" id="out-banner" hidden></div>
+        <div class="credits">
+          <div>
+            <div class="amount" id="amount">—</div>
+            <div class="amount-label" id="amount-label">credits left</div>
+          </div>
+          <a class="btn" id="billing" href="https://platform.claude.com/settings/billing" target="_blank" rel="noopener">Exact balance in Console ↗</a>
+        </div>
+        <div class="bar" id="bar" hidden><span></span></div>
+        <div class="meta" id="spent"></div>
+
+        <form class="balance" id="balance-form">
+          <label for="balance">Your credit balance from Console billing</label>
+          <div class="money">$<input id="balance" type="number" inputmode="decimal" min="0" step="0.01" placeholder="20.00" required /></div>
+          <button class="btn btn-primary" type="submit">Save balance</button>
+          <span class="meta" id="form-msg" role="status"></span>
+        </form>
+        <p class="how">Anthropic doesn't let apps read your balance, so this app prices every Claude call it makes and subtracts it from the balance you saved. Claude use outside this app isn't counted, so re-save your balance from Console now and then.</p>
+
+        <h3>Recent Claude calls</h3>
+        <div class="table-scroll" id="recent"></div>
+      </section>
+
+      <section class="card">
+        <div class="row-link">
+          <div>
+            <h2>Instagram</h2>
+            <p>Connect accounts and set posting times.</p>
+          </div>
+          <a class="btn" href="/api/integrations/instagram/connect">Open</a>
+        </div>
+      </section>
+    </div>
+
+    <script type="module">
+      const $ = (id) => document.getElementById(id);
+      const money = (usd) => (usd > 0 && usd < 0.01 ? `$${usd.toFixed(4)}` : `$${usd.toFixed(2)}`);
+      const when = (iso) => new Date(iso).toLocaleString(undefined, { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+      const tokens = (count) => (count >= 1000 ? `${(count / 1000).toFixed(count >= 10000 ? 0 : 1)}k` : String(count));
+      const plural = (count, word) => `${count} ${word}${count === 1 ? "" : "s"}`;
+
+      const KEY_PILL = {
+        valid: ["ok", (key) => `Key ${key.hint} · working`],
+        rejected: ["bad", (key) => `Key ${key.hint} · rejected`],
+        missing: ["bad", () => "No key in .env"],
+        token: ["ok", () => "Using an auth token"],
+        unreachable: ["", (key) => `Key ${key.hint} · can't reach Anthropic`],
+        unknown: ["", (key) => `Key ${key.hint} · couldn't check`],
+      };
+
+      function table(columns, rows, emptyText) {
+        if (!rows.length) {
+          const p = document.createElement("p");
+          p.className = "empty";
+          p.textContent = emptyText;
+          return p;
+        }
+        const t = document.createElement("table");
+        const head = t.createTHead().insertRow();
+        for (const [label, numeric] of columns) {
+          const th = document.createElement("th");
+          th.textContent = label;
+          if (numeric) th.className = "num";
+          head.append(th);
+        }
+        const body = t.createTBody();
+        for (const row of rows) {
+          const tr = body.insertRow();
+          row.forEach((value, i) => {
+            const td = tr.insertCell();
+            td.textContent = value;
+            if (columns[i][1]) td.className = "num";
+          });
+        }
+        return t;
+      }
+
+      function render({ key, credits: c, billingUrl }) {
+        const [tone, label] = KEY_PILL[key.state] ?? KEY_PILL.unknown;
+        $("key-pill").className = `pill ${tone}`;
+        $("key-pill").textContent = label(key);
+        $("billing").href = billingUrl;
+
+        $("out-banner").hidden = !c.outOfCredits;
+        if (c.outOfCredits) {
+          $("out-banner").textContent = `Anthropic turned down a Claude call on ${when(c.creditError.at)} because the account is out of credits. Add credits in Console, then save your new balance here.`;
+        }
+
+        const amount = $("amount");
+        amount.className = `amount${c.outOfCredits ? " out" : c.low ? " low" : ""}`;
+        amount.textContent = c.outOfCredits ? "$0.00" : c.balance ? money(c.remainingUsd) : "—";
+        $("amount-label").textContent = c.outOfCredits ? "credits left" : c.balance ? "credits left (estimate)" : "Save your balance below to start tracking";
+
+        const bar = $("bar");
+        bar.hidden = !c.balance;
+        if (c.balance) {
+          bar.className = `bar${c.low || c.outOfCredits ? " low" : ""}`;
+          const share = c.outOfCredits || !c.balance.amountUsd ? 0 : c.remainingUsd / c.balance.amountUsd;
+          bar.firstElementChild.style.width = `${share * 100}%`;
+          $("spent").textContent = `${money(c.spentUsd)} of ${money(c.balance.amountUsd)} spent on ${plural(c.calls, "Claude call")} since you saved your balance (${when(c.balance.setAt)}).`;
+          $("balance").placeholder = c.balance.amountUsd.toFixed(2);
+        } else {
+          $("spent").textContent = c.calls ? `${money(c.spentUsd)} spent on ${plural(c.calls, "Claude call")} so far.` : "";
+        }
+
+        $("recent").replaceChildren(
+          table(
+            [["When"], ["Model"], ["Tokens in", true], ["Tokens out", true], ["Cost", true]],
+            c.recent.slice(0, 15).map((r) => [when(r.at), r.model, tokens(r.inputTokens), tokens(r.outputTokens), money(r.usd)]),
+            "No Claude calls yet.",
+          ),
+        );
+      }
+
+      async function load() {
+        try {
+          const res = await fetch("/api/integrations/status");
+          if (!res.ok) throw new Error(res.statusText);
+          render((await res.json()).claude);
+        } catch {
+          $("key-pill").className = "pill";
+          $("key-pill").textContent = "Couldn't load status";
+        }
+      }
+
+      $("balance-form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const msg = $("form-msg");
+        msg.textContent = "Saving…";
+        try {
+          const res = await fetch("/api/integrations/claude/balance", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ amountUsd: $("balance").value }),
+          });
+          const body = await res.json();
+          if (!res.ok) throw new Error(body.error);
+          $("balance").value = "";
+          msg.textContent = "Saved.";
+          await load();
+        } catch (err) {
+          msg.textContent = err.message || "Couldn't save. Is the app running?";
+        }
+      });
+
+      load();
+      setInterval(load, 30_000);
+    </script>
+  </body>
+</html>

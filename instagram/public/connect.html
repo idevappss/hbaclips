@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Instagram · Clip Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="ui/connect.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="/" class="brand">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" /></svg></span>
+        <span>Clip Studio</span>
+      </a>
+      <a class="ig-back" href="/#/scheduler?tab=accounts">← Back to Scheduler</a>
+    </header>
+
+    <main class="ig">
+      <div class="ig-head">
+        <p class="ig-eyebrow">Instagram</p>
+        <h1>Connect your Instagram pages</h1>
+        <p class="ig-lede">Scheduled clips post straight to your Business or Creator accounts as Reels. Access tokens stay on this computer and renew automatically.</p>
+      </div>
+
+      <div id="flash" class="ig-flash" hidden></div>
+
+      <section>
+        <div class="ig-section-head"><h2>Connected accounts</h2><span id="count" class="muted"></span></div>
+        <div id="accounts" class="ig-accounts"><div class="ig-empty">Loading…</div></div>
+      </section>
+
+      <section class="card ig-connect">
+        <h2>Add an account</h2>
+        <div id="oauth" class="ig-oauth" hidden>
+          <a class="btn primary" href="oauth/start">Log in with Instagram</a>
+          <span class="muted">or paste a token</span>
+        </div>
+        <form id="token-form" class="ig-token">
+          <label class="ig-field">
+            <span>Access token</span>
+            <input name="accessToken" type="password" autocomplete="off" spellcheck="false" placeholder="Paste the token from your Meta app" required />
+          </label>
+          <button class="btn primary" type="submit">Connect</button>
+        </form>
+        <details class="ig-help">
+          <summary>How do I get a token?</summary>
+          <ol>
+            <li>In the Instagram app, switch the account to a <b>Business</b> or <b>Creator</b> account (Settings → Account type and tools).</li>
+            <li>At <a href="https://developers.facebook.com/apps" target="_blank" rel="noopener">developers.facebook.com/apps</a>, create an app of type <b>Business</b> and add the <b>Instagram</b> product.</li>
+            <li>Open <b>Instagram → API setup with Instagram business login</b>, add your account, and click <b>Generate token</b>. If Meta asks, add the account as a tester under App roles and accept the invite in Instagram.</li>
+            <li>Paste the token above. Repeat for each page you post to.</li>
+          </ol>
+          <p class="muted">You don't need Meta's App Review for accounts you own or manage. No Facebook Page is required.</p>
+        </details>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+    <script type="module" src="ui/connect.js"></script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clip Studio</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23ef3340'/%3E%3Cpath d='M12.5 9.5v13l10-6.5z' fill='%23fff'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <a href="#/" class="brand">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" /></svg></span>
+        <span class="brand-text"><b>Clip Studio</b><small>Turn videos into opportunity.</small></span>
+      </a>
+
+      <nav class="nav" aria-label="Main">
+        <a href="#/" data-nav="home"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z" /></svg>Home</a>
+        <a href="#/projects" data-nav="projects"><svg viewBox="0 0 24 24"><path d="M3.5 7.5A1.5 1.5 0 0 1 5 6h4.2l2 2H19a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 19 19H5a1.5 1.5 0 0 1-1.5-1.5z" /></svg>Projects</a>
+        <a href="#/study" data-nav="study"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2" /><path d="M8 5v14" /></svg>Study</a>
+        <a href="#/titles" data-nav="titles"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" /><path d="M9 9h6M12 9v7" /></svg>Titles</a>
+        <a href="#/sounds" data-nav="sounds"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12" /><circle cx="6.5" cy="18" r="2.5" /><circle cx="16.5" cy="16" r="2.5" /></svg>Sounds</a>
+        <a href="#/assets" data-nav="assets"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="7" height="7" rx="1.5" /><rect x="13.5" y="4" width="7" height="7" rx="1.5" /><rect x="3.5" y="14" width="7" height="7" rx="1.5" /><circle cx="17" cy="17.5" r="3.5" /></svg>Assets</a>
+        <a href="#/scheduler" data-nav="scheduler"><svg viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="2" /><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4" /></svg>Scheduler</a>
+        <a href="#/analytics" data-nav="analytics"><svg viewBox="0 0 24 24"><path d="M4 19.5V14m5 5.5V8m5 11.5v-7m5 7V5" /></svg>Analytics</a>
+      </nav>
+
+      <p class="nav-label">Library</p>
+      <nav class="nav" aria-label="Library">
+        <a href="#/scheduler?tab=review"><svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2.5" /><path d="m10.5 9.5 4 2.5-4 2.5z" /></svg>Finished clips</a>
+        <a href="#/scheduler?tab=calendar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" /><path d="M12 7.5V12l3 2" /></svg>Calendar</a>
+        <a href="#/scheduler?tab=accounts"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="3.5" /><path d="M5 19.5a7 7 0 0 1 14 0" /></svg>Accounts</a>
+        <a href="/api/integrations/"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path d="M12 3.5v2.5M12 18v2.5M3.5 12H6M18 12h2.5M6 6l1.8 1.8M16.2 16.2 18 18M6 18l1.8-1.8M16.2 7.8 18 6" /></svg>Integrations</a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <div class="credits-card">
+          <span class="credits-bolt"><svg viewBox="0 0 24 24" width="15" height="15"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6z" fill="currentColor" /></svg></span>
+          <span id="credits"></span>
+          <div class="credits-bar" id="credits-bar" hidden><i></i></div>
+          <a class="btn sm credits-btn" href="/api/integrations/">Manage credits</a>
+        </div>
+        <a class="sidebar-account" id="sidebar-account" href="#/scheduler?tab=accounts" hidden></a>
+      </div>
+    </aside>
+
+    <div class="shell">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Menu"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg></button>
+        <div class="search" id="search">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.2-4.2" /></svg>
+          <input id="search-input" type="search" autocomplete="off" placeholder="Search projects, clips, or pages…" />
+          <kbd>⌘ K</kbd>
+          <div class="search-results" id="search-results" hidden></div>
+        </div>
+        <div class="topbar-end">
+          <span id="engine" class="engine"></span>
+          <a class="icon-btn bell" href="#/scheduler?tab=calendar" title="Posts due now">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z" /><path d="M10 20.5a2 2 0 0 0 4 0" /></svg>
+            <span id="due-badge" class="nav-badge" hidden></span>
+          </a>
+          <a class="btn primary new-project" href="#/"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>New project</a>
+        </div>
+      </header>
+      <main id="app"></main>
+    </div>
+    <div class="scrim" id="scrim"></div>
+
+    <div id="toast" class="toast" hidden></div>
+    <script src="/vendor/hyperframes-player.js"></script>
+    <script type="module" src="/api/music/ui/music.js"></script>
+    <script type="module" src="/api/integrations/ui/credits.js"></script>
+    <script type="module" src="/shell.js"></script>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

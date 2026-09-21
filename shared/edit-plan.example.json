@@ -1,0 +1,3075 @@
+{
+  "version": 1,
+  "markers": {
+    "bpm": 122,
+    "beats": [
+      0,
+      0.476,
+      0.964,
+      1.44,
+      1.916,
+      2.403,
+      2.891,
+      3.39,
+      3.889,
+      4.389,
+      4.899,
+      5.41,
+      5.921,
+      6.409,
+      6.873,
+      7.349,
+      7.837,
+      8.313,
+      8.789,
+      9.288,
+      9.787,
+      10.298,
+      10.774,
+      11.25,
+      11.749,
+      12.26,
+      12.748,
+      13.235,
+      13.723,
+      14.211,
+      14.687
+    ],
+    "downbeats": [
+      0,
+      1.916,
+      3.889,
+      5.921,
+      7.837,
+      9.787,
+      11.749,
+      13.723
+    ],
+    "drop": null
+  },
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "length": 14.7,
+  "look": "teal-orange",
+  "lookIntensity": 0.85,
+  "lut": false,
+  "textStyle": "slam",
+  "accent": "FFE600",
+  "music": {
+    "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/data/sounds/mtwkrujp-5d4d58.m4a",
+    "start": 27.388,
+    "gain": 1,
+    "bpm": 122
+  },
+  "title": "LATE NIGHTS",
+  "concept": "Heuristic cut: best-scoring moments from 2 sources, fast pacing on 122 BPM.",
+  "shots": [
+    {
+      "index": 0,
+      "source": "B",
+      "moment": "B184",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 858.5,
+      "slotStart": 0,
+      "slotEnd": 0.967,
+      "pre": 0,
+      "post": 0,
+      "length": 0.967,
+      "speed": "ramp",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.3286666666666667,
+          "speed": 1
+        },
+        {
+          "src": 0.3286666666666667,
+          "out": 0.40599999999999997,
+          "speed": 0.33
+        },
+        {
+          "src": 0.4626466666666667,
+          "out": 0.23199999999999993,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.476
+      ],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "hook",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 0,
+        "duration": 0.967
+      },
+      "sourceWindow": {
+        "in": 858.5,
+        "out": 859.195
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 0,
+          "duration": 0.329,
+          "sourceStart": 858.5,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        },
+        {
+          "timelineStart": 0.329,
+          "duration": 0.406,
+          "sourceStart": 858.829,
+          "rate": 0.33,
+          "reverse": false,
+          "freeze": false
+        },
+        {
+          "timelineStart": 0.735,
+          "duration": 0.232,
+          "sourceStart": 858.963,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": null,
+      "audio": null
+    },
+    {
+      "index": 1,
+      "source": "A",
+      "moment": "A2",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwcwggc-eac804/source.mp4",
+      "in": 5.575,
+      "slotStart": 0.967,
+      "slotEnd": 1.433,
+      "pre": 0,
+      "post": 0,
+      "length": 0.467,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.4666666666666667,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.36",
+      "projectId": "mtwcwggc-eac804",
+      "timeline": {
+        "start": 0.967,
+        "duration": 0.467
+      },
+      "sourceWindow": {
+        "in": 5.575,
+        "out": 6.042
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 0.967,
+          "duration": 0.467,
+          "sourceStart": 5.575,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 0.967,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 2,
+      "source": "B",
+      "moment": "B83",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 384.522,
+      "slotStart": 1.433,
+      "slotEnd": 1.9,
+      "pre": 0,
+      "post": 0,
+      "length": 0.467,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.4666666666666667,
+          "speed": 1
+        }
+      ],
+      "effects": [
+        "punch",
+        "flash"
+      ],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.69",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 1.433,
+        "duration": 0.467
+      },
+      "sourceWindow": {
+        "in": 384.522,
+        "out": 384.989
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 1.433,
+          "duration": 0.467,
+          "sourceStart": 384.522,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": [
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0.0333,
+          1.0526,
+          0,
+          0
+        ],
+        [
+          0.0667,
+          1.1111,
+          0,
+          0
+        ],
+        [
+          0.1,
+          1.1765,
+          0,
+          0
+        ],
+        [
+          0.1333,
+          1.1495,
+          0,
+          0
+        ],
+        [
+          0.1667,
+          1.127,
+          0,
+          0
+        ],
+        [
+          0.2,
+          1.1083,
+          0,
+          0
+        ],
+        [
+          0.2333,
+          1.0925,
+          0,
+          0
+        ],
+        [
+          0.2667,
+          1.0793,
+          0,
+          0
+        ],
+        [
+          0.3,
+          1.068,
+          0,
+          0
+        ],
+        [
+          0.3333,
+          1.0584,
+          0,
+          0
+        ],
+        [
+          0.3667,
+          1.0502,
+          0,
+          0
+        ],
+        [
+          0.4333,
+          1.0373,
+          0,
+          0
+        ],
+        [
+          0.4667,
+          1.0322,
+          0,
+          0
+        ]
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 1.433,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 3,
+      "source": "A",
+      "moment": "A1",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwcwggc-eac804/source.mp4",
+      "in": 0.3,
+      "slotStart": 1.9,
+      "slotEnd": 2.4,
+      "pre": 0,
+      "post": 0,
+      "length": 0.5,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.5,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.37",
+      "projectId": "mtwcwggc-eac804",
+      "timeline": {
+        "start": 1.9,
+        "duration": 0.5
+      },
+      "sourceWindow": {
+        "in": 0.3,
+        "out": 0.8
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 1.9,
+          "duration": 0.5,
+          "sourceStart": 0.3,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 1.9,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 4,
+      "source": "B",
+      "moment": "B82",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 379.744,
+      "slotStart": 2.4,
+      "slotEnd": 2.9,
+      "pre": 0,
+      "post": 0,
+      "length": 0.5,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.5,
+          "speed": 1
+        }
+      ],
+      "effects": [
+        "flash"
+      ],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.7",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 2.4,
+        "duration": 0.5
+      },
+      "sourceWindow": {
+        "in": 379.744,
+        "out": 380.244
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 2.4,
+          "duration": 0.5,
+          "sourceStart": 379.744,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 2.4,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 5,
+      "source": "A",
+      "moment": "A8",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwcwggc-eac804/source.mp4",
+      "in": 37.225,
+      "slotStart": 2.9,
+      "slotEnd": 3.4,
+      "pre": 0,
+      "post": 0.134,
+      "length": 0.633,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.6333333333333333,
+          "speed": 1
+        }
+      ],
+      "effects": [
+        "shake"
+      ],
+      "beats": [
+        0.49
+      ],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "zoom",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.35",
+      "projectId": "mtwcwggc-eac804",
+      "timeline": {
+        "start": 2.9,
+        "duration": 0.633
+      },
+      "sourceWindow": {
+        "in": 37.225,
+        "out": 37.858
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 2.9,
+          "duration": 0.633,
+          "sourceStart": 37.225,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": [
+        [
+          0,
+          1.0638,
+          0,
+          -19.149
+        ],
+        [
+          0.0333,
+          1.0638,
+          -16.116,
+          15.738
+        ],
+        [
+          0.0667,
+          1.0638,
+          18.179,
+          -12.15
+        ],
+        [
+          0.1,
+          1.0638,
+          -8.958,
+          8.695
+        ],
+        [
+          0.1333,
+          1.0638,
+          -2.922,
+          -5.587
+        ],
+        [
+          0.1667,
+          1.0638,
+          9.714,
+          2.954
+        ],
+        [
+          0.2,
+          1.0638,
+          -8.864,
+          -0.852
+        ],
+        [
+          0.2333,
+          1.0638,
+          3.038,
+          -0.716
+        ],
+        [
+          0.2667,
+          1.0638,
+          2.925,
+          1.787
+        ],
+        [
+          0.3,
+          1.0638,
+          -5.476,
+          -2.425
+        ],
+        [
+          0.3333,
+          1.0638,
+          4.081,
+          2.706
+        ],
+        [
+          0.3667,
+          1.0638,
+          -0.68,
+          -2.71
+        ],
+        [
+          0.4,
+          1.0638,
+          -2.157,
+          2.516
+        ],
+        [
+          0.4333,
+          1.0638,
+          2.921,
+          -2.194
+        ],
+        [
+          0.4667,
+          1.0638,
+          -1.748,
+          1.803
+        ],
+        [
+          0.5,
+          1.0638,
+          -0.12,
+          -1.393
+        ],
+        [
+          0.5333,
+          1.0638,
+          1.389,
+          0.997
+        ],
+        [
+          0.5667,
+          1.0638,
+          -1.48,
+          -0.641
+        ],
+        [
+          0.6,
+          1.0638,
+          0.674,
+          0.339
+        ],
+        [
+          0.6333,
+          1.0638,
+          0.3,
+          -0.098
+        ]
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 2.9,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 6,
+      "source": "B",
+      "moment": "B81",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 374.833,
+      "slotStart": 3.4,
+      "slotEnd": 3.9,
+      "pre": 0.134,
+      "post": 0,
+      "length": 0.633,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.6333333333333333,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.124
+      ],
+      "transition": {
+        "type": "zoom",
+        "duration": 0.267
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.65",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 3.266,
+        "duration": 0.633
+      },
+      "sourceWindow": {
+        "in": 374.833,
+        "out": 375.466
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 3.266,
+          "duration": 0.633,
+          "sourceStart": 374.833,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "zoom",
+        "duration": 0.267,
+        "start": 3.266,
+        "sfx": "whoosh"
+      },
+      "audio": null
+    },
+    {
+      "index": 7,
+      "source": "A",
+      "moment": "A6",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwcwggc-eac804/source.mp4",
+      "in": 26.675,
+      "slotStart": 3.9,
+      "slotEnd": 4.9,
+      "pre": 0,
+      "post": 0,
+      "length": 1,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 1,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.489
+      ],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.36",
+      "projectId": "mtwcwggc-eac804",
+      "timeline": {
+        "start": 3.9,
+        "duration": 1
+      },
+      "sourceWindow": {
+        "in": 26.675,
+        "out": 27.675
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 3.9,
+          "duration": 1,
+          "sourceStart": 26.675,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 3.9,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 8,
+      "source": "B",
+      "moment": "B3",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 2.3,
+      "slotStart": 4.9,
+      "slotEnd": 5.4,
+      "pre": 0,
+      "post": 0,
+      "length": 0.5,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.5,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.68",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 4.9,
+        "duration": 0.5
+      },
+      "sourceWindow": {
+        "in": 2.3,
+        "out": 2.8
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 4.9,
+          "duration": 0.5,
+          "sourceStart": 2.3,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 4.9,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 9,
+      "source": "A",
+      "moment": "A5",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwcwggc-eac804/source.mp4",
+      "in": 21.4,
+      "slotStart": 5.4,
+      "slotEnd": 5.933,
+      "pre": 0,
+      "post": 0.1,
+      "length": 0.633,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.6333333333333333,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.521
+      ],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "whip-left",
+      "edgeIn": null,
+      "edgeOut": "blur",
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.35",
+      "projectId": "mtwcwggc-eac804",
+      "timeline": {
+        "start": 5.4,
+        "duration": 0.633
+      },
+      "sourceWindow": {
+        "in": 21.4,
+        "out": 22.033
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 5.4,
+          "duration": 0.633,
+          "sourceStart": 21.4,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 5.4,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 10,
+      "source": "B",
+      "moment": "B4",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 5.8,
+      "slotStart": 5.933,
+      "slotEnd": 6.4,
+      "pre": 0.1,
+      "post": 0,
+      "length": 0.567,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.5666666666666667,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.088
+      ],
+      "transition": {
+        "type": "whip-left",
+        "duration": 0.2
+      },
+      "nextTransition": "cut",
+      "edgeIn": "blur",
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.67",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 5.833,
+        "duration": 0.567
+      },
+      "sourceWindow": {
+        "in": 5.8,
+        "out": 6.367
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 5.833,
+          "duration": 0.567,
+          "sourceStart": 5.8,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "whip-left",
+        "duration": 0.2,
+        "start": 5.833,
+        "sfx": "whoosh-short"
+      },
+      "audio": null
+    },
+    {
+      "index": 11,
+      "source": "A",
+      "moment": "A7",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwcwggc-eac804/source.mp4",
+      "in": 31.95,
+      "slotStart": 6.4,
+      "slotEnd": 6.867,
+      "pre": 0,
+      "post": 0,
+      "length": 0.467,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.4666666666666667,
+          "speed": 1
+        }
+      ],
+      "effects": [
+        "shake",
+        "rgb"
+      ],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.37",
+      "projectId": "mtwcwggc-eac804",
+      "timeline": {
+        "start": 6.4,
+        "duration": 0.467
+      },
+      "sourceWindow": {
+        "in": 31.95,
+        "out": 32.417
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 6.4,
+          "duration": 0.467,
+          "sourceStart": 31.95,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": [
+        [
+          0,
+          1.0638,
+          0,
+          -19.149
+        ],
+        [
+          0.0333,
+          1.0638,
+          -16.116,
+          15.738
+        ],
+        [
+          0.0667,
+          1.0638,
+          18.179,
+          -12.15
+        ],
+        [
+          0.1,
+          1.0638,
+          -8.958,
+          8.695
+        ],
+        [
+          0.1333,
+          1.0638,
+          -2.922,
+          -5.587
+        ],
+        [
+          0.1667,
+          1.0638,
+          9.714,
+          2.954
+        ],
+        [
+          0.2,
+          1.0638,
+          -8.864,
+          -0.852
+        ],
+        [
+          0.2333,
+          1.0638,
+          3.038,
+          -0.716
+        ],
+        [
+          0.2667,
+          1.0638,
+          2.925,
+          1.787
+        ],
+        [
+          0.3,
+          1.0638,
+          -5.476,
+          -2.425
+        ],
+        [
+          0.3333,
+          1.0638,
+          4.081,
+          2.706
+        ],
+        [
+          0.3667,
+          1.0638,
+          -0.68,
+          -2.71
+        ],
+        [
+          0.4,
+          1.0638,
+          -2.157,
+          2.516
+        ],
+        [
+          0.4333,
+          1.0638,
+          2.921,
+          -2.194
+        ],
+        [
+          0.4667,
+          1.0638,
+          -1.748,
+          1.803
+        ]
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 6.4,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 12,
+      "source": "B",
+      "moment": "B183",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 854.9,
+      "slotStart": 6.867,
+      "slotEnd": 7.333,
+      "pre": 0,
+      "post": 0,
+      "length": 0.467,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.4666666666666667,
+          "speed": 1
+        }
+      ],
+      "effects": [
+        "flash"
+      ],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.69",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 6.867,
+        "duration": 0.467
+      },
+      "sourceWindow": {
+        "in": 854.9,
+        "out": 855.367
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 6.867,
+          "duration": 0.467,
+          "sourceStart": 854.9,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 6.867,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 13,
+      "source": "A",
+      "moment": "A3",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwcwggc-eac804/source.mp4",
+      "in": 10.85,
+      "slotStart": 7.333,
+      "slotEnd": 8.3,
+      "pre": 0,
+      "post": 0,
+      "length": 0.967,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.9666666666666667,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.504
+      ],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.37",
+      "projectId": "mtwcwggc-eac804",
+      "timeline": {
+        "start": 7.333,
+        "duration": 0.967
+      },
+      "sourceWindow": {
+        "in": 10.85,
+        "out": 11.817
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 7.333,
+          "duration": 0.967,
+          "sourceStart": 10.85,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 7.333,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 14,
+      "source": "B",
+      "moment": "B24",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 98.9,
+      "slotStart": 8.3,
+      "slotEnd": 8.8,
+      "pre": 0,
+      "post": 0.1,
+      "length": 0.6,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.6,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.489
+      ],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "whip-left",
+      "edgeIn": null,
+      "edgeOut": "blur",
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.7",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 8.3,
+        "duration": 0.6
+      },
+      "sourceWindow": {
+        "in": 98.9,
+        "out": 99.5
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 8.3,
+          "duration": 0.6,
+          "sourceStart": 98.9,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 8.3,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 15,
+      "source": "A",
+      "moment": "A4",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwcwggc-eac804/source.mp4",
+      "in": 16.025,
+      "slotStart": 8.8,
+      "slotEnd": 9.3,
+      "pre": 0.1,
+      "post": 0,
+      "length": 0.6,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.6,
+          "speed": 1
+        }
+      ],
+      "effects": [
+        "shake"
+      ],
+      "beats": [
+        0.089
+      ],
+      "transition": {
+        "type": "whip-left",
+        "duration": 0.2
+      },
+      "nextTransition": "cut",
+      "edgeIn": "blur",
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.36",
+      "projectId": "mtwcwggc-eac804",
+      "timeline": {
+        "start": 8.7,
+        "duration": 0.6
+      },
+      "sourceWindow": {
+        "in": 16.025,
+        "out": 16.625
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 8.7,
+          "duration": 0.6,
+          "sourceStart": 16.025,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": [
+        [
+          0,
+          1.0638,
+          0,
+          0
+        ],
+        [
+          0.0667,
+          1.0638,
+          0,
+          0
+        ],
+        [
+          0.1,
+          1.0638,
+          0,
+          -19.149
+        ],
+        [
+          0.1333,
+          1.0638,
+          -16.116,
+          15.738
+        ],
+        [
+          0.1667,
+          1.0638,
+          18.179,
+          -12.15
+        ],
+        [
+          0.2,
+          1.0638,
+          -8.958,
+          8.695
+        ],
+        [
+          0.2333,
+          1.0638,
+          -2.922,
+          -5.587
+        ],
+        [
+          0.2667,
+          1.0638,
+          9.714,
+          2.954
+        ],
+        [
+          0.3,
+          1.0638,
+          -8.864,
+          -0.852
+        ],
+        [
+          0.3333,
+          1.0638,
+          3.038,
+          -0.716
+        ],
+        [
+          0.3667,
+          1.0638,
+          2.925,
+          1.787
+        ],
+        [
+          0.4,
+          1.0638,
+          -5.476,
+          -2.425
+        ],
+        [
+          0.4333,
+          1.0638,
+          4.081,
+          2.706
+        ],
+        [
+          0.4667,
+          1.0638,
+          -0.68,
+          -2.71
+        ],
+        [
+          0.5,
+          1.0638,
+          -2.157,
+          2.516
+        ],
+        [
+          0.5333,
+          1.0638,
+          2.921,
+          -2.194
+        ],
+        [
+          0.5667,
+          1.0638,
+          -1.748,
+          1.803
+        ],
+        [
+          0.6,
+          1.0638,
+          -0.12,
+          -1.393
+        ]
+      ],
+      "transitionIn": {
+        "type": "whip-left",
+        "duration": 0.2,
+        "start": 8.7,
+        "sfx": "whoosh-short"
+      },
+      "audio": null
+    },
+    {
+      "index": 16,
+      "source": "B",
+      "moment": "B23",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 94.1,
+      "slotStart": 9.3,
+      "slotEnd": 9.8,
+      "pre": 0,
+      "post": 0,
+      "length": 0.5,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.5,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.7",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 9.3,
+        "duration": 0.5
+      },
+      "sourceWindow": {
+        "in": 94.1,
+        "out": 94.6
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 9.3,
+          "duration": 0.5,
+          "sourceStart": 94.1,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 9.3,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 17,
+      "source": "B",
+      "moment": "B148",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 691.755,
+      "slotStart": 9.8,
+      "slotEnd": 10.3,
+      "pre": 0,
+      "post": 0,
+      "length": 0.5,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.5,
+          "speed": 1
+        }
+      ],
+      "effects": [
+        "rgb"
+      ],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.68",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 9.8,
+        "duration": 0.5
+      },
+      "sourceWindow": {
+        "in": 691.755,
+        "out": 692.255
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 9.8,
+          "duration": 0.5,
+          "sourceStart": 691.755,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 9.8,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 18,
+      "source": "B",
+      "moment": "B190",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 879.9,
+      "slotStart": 10.3,
+      "slotEnd": 10.767,
+      "pre": 0,
+      "post": 0.1,
+      "length": 0.567,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.5666666666666667,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.474
+      ],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "whip-left",
+      "edgeIn": null,
+      "edgeOut": "blur",
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.67",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 10.3,
+        "duration": 0.567
+      },
+      "sourceWindow": {
+        "in": 879.9,
+        "out": 880.467
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 10.3,
+          "duration": 0.567,
+          "sourceStart": 879.9,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 10.3,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 19,
+      "source": "B",
+      "moment": "B124",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 570.2,
+      "slotStart": 10.767,
+      "slotEnd": 11.267,
+      "pre": 0.1,
+      "post": 0,
+      "length": 0.6,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.6,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.107
+      ],
+      "transition": {
+        "type": "whip-left",
+        "duration": 0.2
+      },
+      "nextTransition": "cut",
+      "edgeIn": "blur",
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.64",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 10.667,
+        "duration": 0.6
+      },
+      "sourceWindow": {
+        "in": 570.2,
+        "out": 570.8
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 10.667,
+          "duration": 0.6,
+          "sourceStart": 570.2,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "whip-left",
+        "duration": 0.2,
+        "start": 10.667,
+        "sfx": "whoosh-short"
+      },
+      "audio": null
+    },
+    {
+      "index": 20,
+      "source": "B",
+      "moment": "B125",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 575.361,
+      "slotStart": 11.267,
+      "slotEnd": 12.267,
+      "pre": 0,
+      "post": 0,
+      "length": 1,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 1,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.482
+      ],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.64",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 11.267,
+        "duration": 1
+      },
+      "sourceWindow": {
+        "in": 575.361,
+        "out": 576.361
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 11.267,
+          "duration": 1,
+          "sourceStart": 575.361,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 11.267,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 21,
+      "source": "B",
+      "moment": "B178",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 837.3,
+      "slotStart": 12.267,
+      "slotEnd": 12.733,
+      "pre": 0,
+      "post": 0,
+      "length": 0.467,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.4666666666666667,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.69",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 12.267,
+        "duration": 0.467
+      },
+      "sourceWindow": {
+        "in": 837.3,
+        "out": 837.767
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 12.267,
+          "duration": 0.467,
+          "sourceStart": 837.3,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 12.267,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 22,
+      "source": "B",
+      "moment": "B137",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 636.088,
+      "slotStart": 12.733,
+      "slotEnd": 13.233,
+      "pre": 0,
+      "post": 0,
+      "length": 0.5,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.5,
+          "speed": 1
+        }
+      ],
+      "effects": [
+        "punch"
+      ],
+      "beats": [],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "cut",
+      "edgeIn": null,
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.72",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 12.733,
+        "duration": 0.5
+      },
+      "sourceWindow": {
+        "in": 636.088,
+        "out": 636.588
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 12.733,
+          "duration": 0.5,
+          "sourceStart": 636.088,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": [
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0.0333,
+          1.0526,
+          0,
+          0
+        ],
+        [
+          0.0667,
+          1.1111,
+          0,
+          0
+        ],
+        [
+          0.1,
+          1.1765,
+          0,
+          0
+        ],
+        [
+          0.1333,
+          1.1495,
+          0,
+          0
+        ],
+        [
+          0.1667,
+          1.127,
+          0,
+          0
+        ],
+        [
+          0.2,
+          1.1083,
+          0,
+          0
+        ],
+        [
+          0.2333,
+          1.0925,
+          0,
+          0
+        ],
+        [
+          0.2667,
+          1.0793,
+          0,
+          0
+        ],
+        [
+          0.3,
+          1.068,
+          0,
+          0
+        ],
+        [
+          0.3333,
+          1.0584,
+          0,
+          0
+        ],
+        [
+          0.3667,
+          1.0502,
+          0,
+          0
+        ],
+        [
+          0.4333,
+          1.0373,
+          0,
+          0
+        ],
+        [
+          0.5,
+          1.0278,
+          0,
+          0
+        ]
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 12.733,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 23,
+      "source": "B",
+      "moment": "B136",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 631.027,
+      "slotStart": 13.233,
+      "slotEnd": 13.733,
+      "pre": 0,
+      "post": 0.1,
+      "length": 0.6,
+      "speed": "normal",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.6,
+          "speed": 1
+        }
+      ],
+      "effects": [
+        "shake",
+        "push"
+      ],
+      "beats": [
+        0.49
+      ],
+      "transition": {
+        "type": "cut",
+        "duration": 0
+      },
+      "nextTransition": "glitch",
+      "edgeIn": null,
+      "edgeOut": "rgb",
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.65",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 13.233,
+        "duration": 0.6
+      },
+      "sourceWindow": {
+        "in": 631.027,
+        "out": 631.627
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 13.233,
+          "duration": 0.6,
+          "sourceStart": 631.027,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": [
+        [
+          0,
+          1.0638,
+          0,
+          -19.149
+        ],
+        [
+          0.0333,
+          1.0746,
+          -16.28,
+          15.898
+        ],
+        [
+          0.0667,
+          1.0856,
+          18.552,
+          -12.399
+        ],
+        [
+          0.1,
+          1.0969,
+          -9.236,
+          8.965
+        ],
+        [
+          0.1333,
+          1.1084,
+          -3.044,
+          -5.821
+        ],
+        [
+          0.1667,
+          1.1201,
+          10.228,
+          3.11
+        ],
+        [
+          0.2,
+          1.1321,
+          -9.432,
+          -0.907
+        ],
+        [
+          0.2333,
+          1.1443,
+          3.268,
+          -0.77
+        ],
+        [
+          0.2667,
+          1.1568,
+          3.18,
+          1.944
+        ],
+        [
+          0.3,
+          1.1696,
+          -6.02,
+          -2.666
+        ],
+        [
+          0.3333,
+          1.1827,
+          4.537,
+          3.008
+        ],
+        [
+          0.3667,
+          1.196,
+          -0.764,
+          -3.046
+        ],
+        [
+          0.4,
+          1.2097,
+          -2.453,
+          2.861
+        ],
+        [
+          0.4333,
+          1.2237,
+          3.359,
+          -2.523
+        ],
+        [
+          0.4667,
+          1.238,
+          -2.035,
+          2.099
+        ],
+        [
+          0.5,
+          1.2526,
+          -0.142,
+          -1.64
+        ],
+        [
+          0.5333,
+          1.2676,
+          1.655,
+          1.188
+        ],
+        [
+          0.5667,
+          1.283,
+          -1.785,
+          -0.773
+        ],
+        [
+          0.6,
+          1.2987,
+          0.823,
+          0.414
+        ]
+      ],
+      "transitionIn": {
+        "type": "cut",
+        "duration": 0,
+        "start": 13.233,
+        "sfx": null
+      },
+      "audio": null
+    },
+    {
+      "index": 24,
+      "source": "B",
+      "moment": "B131",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "in": 605.624,
+      "slotStart": 13.733,
+      "slotEnd": 14.7,
+      "pre": 0.1,
+      "post": 0,
+      "length": 1.067,
+      "speed": "ramp",
+      "parts": [
+        {
+          "src": 0,
+          "out": 0.3626666666666667,
+          "speed": 1
+        },
+        {
+          "src": 0.3626666666666667,
+          "out": 0.44799999999999995,
+          "speed": 0.33
+        },
+        {
+          "src": 0.5105066666666667,
+          "out": 0.256,
+          "speed": 1
+        }
+      ],
+      "effects": [],
+      "beats": [
+        0.09,
+        0.578
+      ],
+      "transition": {
+        "type": "glitch",
+        "duration": 0.2
+      },
+      "nextTransition": "cut",
+      "edgeIn": "rgb",
+      "edgeOut": null,
+      "focusX": 50,
+      "frame": "fill",
+      "useAudio": false,
+      "text": "",
+      "why": "score 0.66",
+      "projectId": "mtwfemq8-2b48be",
+      "timeline": {
+        "start": 13.633,
+        "duration": 1.067
+      },
+      "sourceWindow": {
+        "in": 605.624,
+        "out": 606.391
+      },
+      "speedSegments": [
+        {
+          "timelineStart": 13.633,
+          "duration": 0.363,
+          "sourceStart": 605.624,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        },
+        {
+          "timelineStart": 13.996,
+          "duration": 0.448,
+          "sourceStart": 605.987,
+          "rate": 0.33,
+          "reverse": false,
+          "freeze": false
+        },
+        {
+          "timelineStart": 14.444,
+          "duration": 0.256,
+          "sourceStart": 606.135,
+          "rate": 1,
+          "reverse": false,
+          "freeze": false
+        }
+      ],
+      "reframe": {
+        "mode": "fill",
+        "focusX": 0.5,
+        "focusY": 0.42
+      },
+      "motion": null,
+      "transitionIn": {
+        "type": "glitch",
+        "duration": 0.2,
+        "start": 13.633,
+        "sfx": "glitch"
+      },
+      "audio": null
+    }
+  ],
+  "texts": [
+    {
+      "start": 0.03,
+      "end": 1.6,
+      "text": "LATE NIGHTS",
+      "y": 0.2,
+      "size": 0.82,
+      "xPx": 540,
+      "yPx": 384,
+      "style": {
+        "id": "slam",
+        "font": "Impact",
+        "weight": 400,
+        "sizePx": 150,
+        "color": "#FFFFFF",
+        "outlinePx": 7,
+        "outlineColor": "#000000",
+        "shadowPx": 4,
+        "letterSpacingPx": 1,
+        "uppercase": true,
+        "glow": false,
+        "box": false,
+        "animation": "slam",
+        "animationTiming": "scale 1.65→1.00 and opacity 0→1 over 90 ms, 1.00→1.04 by 160 ms, back to 1.00 by 240 ms; fade out over the last min(160 ms, 20%)",
+        "maxWidthPx": 929,
+        "shrink": "0.9× for two lines, 0.78× for three or more"
+      }
+    }
+  ],
+  "captions": [],
+  "sfx": [
+    {
+      "name": "whoosh",
+      "at": 3.1,
+      "duration": 0.57,
+      "gain": 0.5
+    },
+    {
+      "name": "whoosh-short",
+      "at": 5.713,
+      "duration": 0.57,
+      "gain": 0.45
+    },
+    {
+      "name": "whoosh-short",
+      "at": 8.58,
+      "duration": 0.57,
+      "gain": 0.45
+    },
+    {
+      "name": "whoosh-short",
+      "at": 10.547,
+      "duration": 0.57,
+      "gain": 0.45
+    },
+    {
+      "name": "glitch-1",
+      "at": 13.703,
+      "duration": 0.55,
+      "gain": 0.32
+    }
+  ],
+  "contract": "edit-plan/1",
+  "editId": "mtwl4sd4-24a4f7",
+  "name": "Plan contract example",
+  "planVersion": 1,
+  "createdAt": "2026-09-11T06:39:17.506Z",
+  "director": {
+    "mode": "demo",
+    "concept": "Heuristic cut: best-scoring moments from 2 sources, fast pacing on 122 BPM.",
+    "notice": "Claude is out of API credits (console.anthropic.com → Plans & Billing), so the heuristic director cut this one. Re-roll once that's fixed for a Claude cut."
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration": 14.7,
+    "background": "#000000"
+  },
+  "sources": {
+    "A": {
+      "name": "sample.mp4",
+      "projectId": "mtwcwggc-eac804",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwcwggc-eac804/source.mp4",
+      "duration": 42.2,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "hasAudio": true
+    },
+    "B": {
+      "name": "1.mp4",
+      "projectId": "mtwfemq8-2b48be",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/projects/mtwfemq8-2b48be/source.mp4",
+      "duration": 932.066667,
+      "width": 3840,
+      "height": 2160,
+      "fps": 30,
+      "hasAudio": true
+    }
+  },
+  "grade": {
+    "look": "teal-orange",
+    "label": "Teal & Orange",
+    "intensity": 0.85,
+    "params": {
+      "contrast": 1.102,
+      "saturation": 1.102,
+      "gamma": 1,
+      "brightness": 0,
+      "warmth": 0.085,
+      "tint": 0,
+      "shadows": [
+        -0.051,
+        0.0085,
+        0.0765
+      ],
+      "highlights": [
+        0.068,
+        0.017,
+        -0.0595
+      ],
+      "fade": 0,
+      "vignette": 0.255,
+      "grain": 0,
+      "sharpen": 0.255,
+      "soften": 0,
+      "mono": 0
+    },
+    "cssFilter": "contrast(1.102) saturate(1.102) brightness(1) sepia(0.026)",
+    "overlays": {
+      "vignette": 0.255,
+      "grain": 0,
+      "fade": 0,
+      "splitTone": {
+        "shadows": [
+          -0.051,
+          0.0085,
+          0.0765
+        ],
+        "highlights": [
+          0.068,
+          0.017,
+          -0.0595
+        ],
+        "warmth": 0.085,
+        "tint": 0
+      }
+    },
+    "ffmpeg": "eq=contrast=1.102:saturation=1.102:gamma=1:brightness=0,colorbalance=rs=-0.048:gs=0.009:bs=0.074:rm=0.005:gm=0.001:bm=-0.005:rh=0.071:gh=0.018:bh=-0.063,unsharp=5:5:0.255:5:5:0,vignette=a=0.295"
+  },
+  "transitions": [
+    {
+      "from": 0,
+      "to": 1,
+      "type": "cut",
+      "duration": 0,
+      "start": 0.967,
+      "sfx": null
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "type": "cut",
+      "duration": 0,
+      "start": 1.433,
+      "sfx": null
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "type": "cut",
+      "duration": 0,
+      "start": 1.9,
+      "sfx": null
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "type": "cut",
+      "duration": 0,
+      "start": 2.4,
+      "sfx": null
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "type": "cut",
+      "duration": 0,
+      "start": 2.9,
+      "sfx": null
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "type": "zoom",
+      "duration": 0.267,
+      "start": 3.266,
+      "sfx": "whoosh"
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "type": "cut",
+      "duration": 0,
+      "start": 3.9,
+      "sfx": null
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "type": "cut",
+      "duration": 0,
+      "start": 4.9,
+      "sfx": null
+    },
+    {
+      "from": 8,
+      "to": 9,
+      "type": "cut",
+      "duration": 0,
+      "start": 5.4,
+      "sfx": null
+    },
+    {
+      "from": 9,
+      "to": 10,
+      "type": "whip-left",
+      "duration": 0.2,
+      "start": 5.833,
+      "sfx": "whoosh-short"
+    },
+    {
+      "from": 10,
+      "to": 11,
+      "type": "cut",
+      "duration": 0,
+      "start": 6.4,
+      "sfx": null
+    },
+    {
+      "from": 11,
+      "to": 12,
+      "type": "cut",
+      "duration": 0,
+      "start": 6.867,
+      "sfx": null
+    },
+    {
+      "from": 12,
+      "to": 13,
+      "type": "cut",
+      "duration": 0,
+      "start": 7.333,
+      "sfx": null
+    },
+    {
+      "from": 13,
+      "to": 14,
+      "type": "cut",
+      "duration": 0,
+      "start": 8.3,
+      "sfx": null
+    },
+    {
+      "from": 14,
+      "to": 15,
+      "type": "whip-left",
+      "duration": 0.2,
+      "start": 8.7,
+      "sfx": "whoosh-short"
+    },
+    {
+      "from": 15,
+      "to": 16,
+      "type": "cut",
+      "duration": 0,
+      "start": 9.3,
+      "sfx": null
+    },
+    {
+      "from": 16,
+      "to": 17,
+      "type": "cut",
+      "duration": 0,
+      "start": 9.8,
+      "sfx": null
+    },
+    {
+      "from": 17,
+      "to": 18,
+      "type": "cut",
+      "duration": 0,
+      "start": 10.3,
+      "sfx": null
+    },
+    {
+      "from": 18,
+      "to": 19,
+      "type": "whip-left",
+      "duration": 0.2,
+      "start": 10.667,
+      "sfx": "whoosh-short"
+    },
+    {
+      "from": 19,
+      "to": 20,
+      "type": "cut",
+      "duration": 0,
+      "start": 11.267,
+      "sfx": null
+    },
+    {
+      "from": 20,
+      "to": 21,
+      "type": "cut",
+      "duration": 0,
+      "start": 12.267,
+      "sfx": null
+    },
+    {
+      "from": 21,
+      "to": 22,
+      "type": "cut",
+      "duration": 0,
+      "start": 12.733,
+      "sfx": null
+    },
+    {
+      "from": 22,
+      "to": 23,
+      "type": "cut",
+      "duration": 0,
+      "start": 13.233,
+      "sfx": null
+    },
+    {
+      "from": 23,
+      "to": 24,
+      "type": "glitch",
+      "duration": 0.2,
+      "start": 13.633,
+      "sfx": "glitch"
+    }
+  ],
+  "effectCues": [
+    {
+      "shot": 2,
+      "type": "flash",
+      "start": 1.433,
+      "duration": 0.067,
+      "params": {
+        "brightnessAdd": 0.38
+      }
+    },
+    {
+      "shot": 2,
+      "type": "flash",
+      "start": 1.5,
+      "duration": 0.067,
+      "params": {
+        "brightnessAdd": 0.16
+      }
+    },
+    {
+      "shot": 4,
+      "type": "flash",
+      "start": 2.4,
+      "duration": 0.067,
+      "params": {
+        "brightnessAdd": 0.38
+      }
+    },
+    {
+      "shot": 4,
+      "type": "flash",
+      "start": 2.467,
+      "duration": 0.067,
+      "params": {
+        "brightnessAdd": 0.16
+      }
+    },
+    {
+      "shot": 9,
+      "type": "motion-blur",
+      "start": 5.933,
+      "duration": 0.1,
+      "params": {
+        "axis": "x",
+        "blurSigmaPx": 34,
+        "reason": "whip transition out"
+      }
+    },
+    {
+      "shot": 10,
+      "type": "motion-blur",
+      "start": 5.833,
+      "duration": 0.1,
+      "params": {
+        "axis": "x",
+        "blurSigmaPx": 34,
+        "reason": "whip transition in"
+      }
+    },
+    {
+      "shot": 11,
+      "type": "rgb-split",
+      "start": 6.4,
+      "duration": 0.17,
+      "params": {
+        "redShiftPx": [
+          -16,
+          5
+        ],
+        "blueShiftPx": [
+          16,
+          -5
+        ]
+      }
+    },
+    {
+      "shot": 12,
+      "type": "flash",
+      "start": 6.867,
+      "duration": 0.067,
+      "params": {
+        "brightnessAdd": 0.38
+      }
+    },
+    {
+      "shot": 12,
+      "type": "flash",
+      "start": 6.934,
+      "duration": 0.067,
+      "params": {
+        "brightnessAdd": 0.16
+      }
+    },
+    {
+      "shot": 14,
+      "type": "motion-blur",
+      "start": 8.8,
+      "duration": 0.1,
+      "params": {
+        "axis": "x",
+        "blurSigmaPx": 34,
+        "reason": "whip transition out"
+      }
+    },
+    {
+      "shot": 15,
+      "type": "motion-blur",
+      "start": 8.7,
+      "duration": 0.1,
+      "params": {
+        "axis": "x",
+        "blurSigmaPx": 34,
+        "reason": "whip transition in"
+      }
+    },
+    {
+      "shot": 17,
+      "type": "rgb-split",
+      "start": 9.8,
+      "duration": 0.17,
+      "params": {
+        "redShiftPx": [
+          -16,
+          5
+        ],
+        "blueShiftPx": [
+          16,
+          -5
+        ]
+      }
+    },
+    {
+      "shot": 18,
+      "type": "motion-blur",
+      "start": 10.767,
+      "duration": 0.1,
+      "params": {
+        "axis": "x",
+        "blurSigmaPx": 34,
+        "reason": "whip transition out"
+      }
+    },
+    {
+      "shot": 19,
+      "type": "motion-blur",
+      "start": 10.667,
+      "duration": 0.1,
+      "params": {
+        "axis": "x",
+        "blurSigmaPx": 34,
+        "reason": "whip transition in"
+      }
+    },
+    {
+      "shot": 23,
+      "type": "rgb-split",
+      "start": 13.683,
+      "duration": 0.15,
+      "params": {
+        "redShiftPx": [
+          -16,
+          5
+        ],
+        "blueShiftPx": [
+          16,
+          -5
+        ],
+        "reason": "glitch transition out"
+      }
+    },
+    {
+      "shot": 24,
+      "type": "rgb-split",
+      "start": 13.633,
+      "duration": 0.15,
+      "params": {
+        "redShiftPx": [
+          -16,
+          5
+        ],
+        "blueShiftPx": [
+          16,
+          -5
+        ],
+        "reason": "glitch transition in"
+      }
+    }
+  ],
+  "textStyleResolved": {
+    "id": "slam",
+    "font": "Impact",
+    "weight": 400,
+    "sizePx": 150,
+    "color": "#FFFFFF",
+    "outlinePx": 7,
+    "outlineColor": "#000000",
+    "shadowPx": 4,
+    "letterSpacingPx": 1,
+    "uppercase": true,
+    "glow": false,
+    "box": false,
+    "animation": "slam",
+    "animationTiming": "scale 1.65→1.00 and opacity 0→1 over 90 ms, 1.00→1.04 by 160 ms, back to 1.00 by 240 ms; fade out over the last min(160 ms, 20%)",
+    "maxWidthPx": 929,
+    "shrink": "0.9× for two lines, 0.78× for three or more"
+  },
+  "captionStyle": {
+    "font": "Avenir Next Condensed Heavy",
+    "weight": 400,
+    "sizePx": 88,
+    "color": "#FFFFFF",
+    "activeColor": "#FFE600",
+    "outlinePx": 6,
+    "outlineColor": "#000000",
+    "shadowPx": 3,
+    "uppercase": true,
+    "xPx": 540,
+    "yPx": 1421,
+    "firstWordPop": "scale 0.88→1 over 80 ms"
+  },
+  "audio": {
+    "music": {
+      "trackId": "snd_a440d3466b",
+      "name": "Video by gabrielrxshdy",
+      "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/data/sounds/mtwkrujp-5d4d58.m4a",
+      "sourceStart": 27.388,
+      "bpm": 122,
+      "volume": {
+        "points": [
+          {
+            "t": 0,
+            "gain": 0
+          },
+          {
+            "t": 0.03,
+            "gain": 1
+          },
+          {
+            "t": 13.1,
+            "gain": 1
+          },
+          {
+            "t": 14.7,
+            "gain": 0
+          }
+        ],
+        "duckGain": 0.22,
+        "fadeOutSec": 1.6
+      }
+    },
+    "dialogue": [],
+    "sfx": [
+      {
+        "name": "whoosh",
+        "at": 3.1,
+        "duration": 0.57,
+        "gain": 0.5,
+        "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/edits/sfx/whoosh.mp3",
+        "url": "sfx/whoosh.mp3",
+        "sourceStart": 0,
+        "fadeOutSec": 0.15
+      },
+      {
+        "name": "whoosh-short",
+        "at": 5.713,
+        "duration": 0.57,
+        "gain": 0.45,
+        "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/edits/sfx/whoosh-short.mp3",
+        "url": "sfx/whoosh-short.mp3",
+        "sourceStart": 0,
+        "fadeOutSec": 0.15
+      },
+      {
+        "name": "whoosh-short",
+        "at": 8.58,
+        "duration": 0.57,
+        "gain": 0.45,
+        "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/edits/sfx/whoosh-short.mp3",
+        "url": "sfx/whoosh-short.mp3",
+        "sourceStart": 0,
+        "fadeOutSec": 0.15
+      },
+      {
+        "name": "whoosh-short",
+        "at": 10.547,
+        "duration": 0.57,
+        "gain": 0.45,
+        "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/edits/sfx/whoosh-short.mp3",
+        "url": "sfx/whoosh-short.mp3",
+        "sourceStart": 0,
+        "fadeOutSec": 0.15
+      },
+      {
+        "name": "glitch-1",
+        "at": 13.703,
+        "duration": 0.55,
+        "gain": 0.32,
+        "file": "/Users/wfp/Documents/CLAUDE/I CLIP YOU/edits/sfx/glitch-1.mp3",
+        "url": "sfx/glitch-1.mp3",
+        "sourceStart": 0,
+        "fadeOutSec": 0.15
+      }
+    ],
+    "master": {
+      "loudnessLufs": -14,
+      "truePeakDb": -1.5
+    }
+  }
+}

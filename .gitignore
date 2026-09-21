@@ -1,0 +1,9 @@
+node_modules/
+projects/
+.env
+data/
+
+# Local tooling and OS files, not part of the app
+.claude/skills/
+.DS_Store
+*.log

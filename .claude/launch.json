@@ -1,0 +1,53 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "clip-studio",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "/Users/wfp/Documents/CLAUDE/I CLIP YOU/server.js"
+      ],
+      "port": 5173
+    },
+    {
+      "name": "dope-edits",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "/Users/wfp/Documents/CLAUDE/I CLIP YOU/edits/server.js"
+      ],
+      "port": 5190
+    },
+    {
+      "name": "music-channel",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "/Users/wfp/Documents/CLAUDE/I CLIP YOU/music/dev.js"
+      ],
+      "port": 5191
+    },
+    {
+      "name": "integrations",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "/Users/wfp/Documents/CLAUDE/I CLIP YOU/integrations/dev.js"
+      ],
+      "port": 5192
+    },
+    {
+      "name": "timeline-editor",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "/Users/wfp/Documents/CLAUDE/I CLIP YOU/editor/dev.js"
+      ],
+      "port": 5193
+    },
+    {
+      "name": "assets",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "/Users/wfp/Documents/CLAUDE/I CLIP YOU/resources/dev.js"
+      ],
+      "port": 5194
+    }
+  ]
+}

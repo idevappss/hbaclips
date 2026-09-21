@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dope Edits</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">DOPE<span>EDITS</span></div>
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="make" role="tab">Make</button>
+        <button class="tab" data-tab="lab" role="tab">Style Lab</button>
+      </nav>
+      <div id="director" class="pill"></div>
+    </header>
+
+    <main>
+      <!-- MAKE -->
+      <section id="tab-make" class="make">
+        <form id="new-edit" class="panel composer" autocomplete="off">
+          <h2>New edit</h2>
+
+          <div class="drop" id="drop-clips" tabindex="0">
+            <input type="file" id="clips-input" accept="video/*,.mov,.mp4,.m4v,.webm,.mkv" multiple hidden />
+            <strong>Drop your clips</strong>
+            <span>One long video or a bunch of pieces. We keep the best parts.</span>
+          </div>
+          <ul id="clip-list" class="files"></ul>
+          <button type="button" class="link" id="toggle-library">+ Use a video from Clip Studio</button>
+          <div id="library" class="library" hidden></div>
+
+          <div class="drop small" id="drop-music" tabindex="0">
+            <input type="file" id="music-input" accept="audio/*,.mp3,.wav,.m4a,.aac,.flac" hidden />
+            <strong>Drop a song</strong>
+            <span id="music-name">Cuts land on its beat. Optional.</span>
+          </div>
+          <label class="field" id="sound-pick" hidden>
+            <span>Or pick from your sound library</span>
+            <select id="sound-select"></select>
+          </label>
+
+          <label class="field">
+            <span>Vibe</span>
+            <textarea id="vibe" rows="3" placeholder="e.g. hype gym montage, hard cuts on every kick, whip pans into the drop, gritty B&W with red text"></textarea>
+          </label>
+
+          <div class="field"><span>Length</span><div class="seg" data-opt="length"></div></div>
+          <div class="field"><span>Format</span><div class="seg" data-opt="aspect"></div></div>
+          <div class="field"><span>Energy</span><div class="seg" data-opt="energy"></div></div>
+          <div class="field"><span>Audio</span><div class="seg" data-opt="audioMode"></div></div>
+
+          <details class="more">
+            <summary>Look, text &amp; sound</summary>
+            <div class="grid2">
+              <label class="field"><span>Color grade</span><select id="look"></select></label>
+              <label class="field"><span>Text style</span><select id="text-style"></select></label>
+            </div>
+            <label class="field"><span>Opening title</span><input id="title" maxlength="80" placeholder="Optional hook text" /></label>
+            <div class="field"><span>Sound effects</span><div class="seg" data-opt="sfx"></div></div>
+            <label class="check"><input type="checkbox" id="captions" /> Captions on dialogue</label>
+          </details>
+
+          <div class="field">
+            <span>Style ideas <em id="ideas-hint">none yet — add some in Style Lab</em></span>
+            <div id="idea-chips" class="chips"></div>
+          </div>
+
+          <button class="go" id="go" type="submit">Make it dope</button>
+          <div id="upload-progress" class="bar" hidden><i></i><span></span></div>
+        </form>
+
+        <section class="feed">
+          <div id="edits"></div>
+          <p id="empty" class="empty" hidden>Your edits show up here.</p>
+        </section>
+      </section>
+
+      <!-- STYLE LAB -->
+      <section id="tab-lab" class="lab" hidden>
+        <form id="new-idea" class="panel composer" autocomplete="off">
+          <h2>Add a style idea</h2>
+          <p class="sub">Drop an edit you love, screenshots of a look, or just describe it. It gets broken down into a recipe that every new edit learns from.</p>
+          <label class="field"><span>Name</span><input id="idea-title" maxlength="80" placeholder="e.g. Phonk car edit" /></label>
+          <label class="field"><span>What makes it dope?</span><textarea id="idea-notes" rows="5" placeholder="Speed ramps into slow-mo on the bass, white flash every 4 bars, heavy grain, cold blue grade, big Impact text…"></textarea></label>
+          <label class="field"><span>Link</span><input id="idea-url" placeholder="Optional TikTok / IG / YouTube link for reference" /></label>
+          <div class="drop small" id="drop-idea" tabindex="0">
+            <input type="file" id="idea-input" accept="video/*,image/*" multiple hidden />
+            <strong>Drop reference edits or images</strong>
+            <span id="idea-files">Videos get timed, color-measured and watched.</span>
+          </div>
+          <button class="go" type="submit">Add idea</button>
+        </form>
+
+        <section class="ideas-col">
+          <div id="ideas" class="ideas"></div>
+          <article class="panel style-guide">
+            <header><h2>Your edit style</h2><button class="btn ghost" id="refresh-style" type="button">Refresh</button></header>
+            <div id="style-md" class="md"></div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Music Channel · Clip Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="/#/" class="brand">
+        <span class="brand-mark"><svg viewBox="0 0 24 24" width="14" height="14"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" /></svg></span>
+        <span>Clip Studio</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#/">Home</a>
+        <a href="/#/projects">Projects</a>
+        <a href="/#/study">Study</a>
+        <a href="/#/sounds" class="on">Sounds</a>
+        <a href="/#/scheduler">Scheduler</a>
+      </nav>
+      <span></span>
+    </header>
+    <main id="app"></main>
+    <div id="toast" class="toast" hidden></div>
+    <script type="module">
+      await import("./ui/music.js");
+      window.musicChannel.mount(document.getElementById("app"), { standalone: true });
+    </script>
+  </body>
+</html>
