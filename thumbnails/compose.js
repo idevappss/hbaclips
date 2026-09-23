@@ -1,5 +1,6 @@
 // The thumbnail itself: a 1280×720 page that Chrome screenshots. Layouts keep the headline off the
 // speaker's face, and the accent colour comes from the Assets brand kit when the creator has one.
+import fs from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { ROOT } from "../lib/tools.js";
@@ -22,6 +23,20 @@ export const LAYOUTS = [
 export const LAYOUT_IDS = new Set(LAYOUTS.map((l) => l.id));
 
 const DEFAULT_ACCENT = "#ef3340";
+
+let house = null;
+/**
+ * The colour for burned-in artwork, read from the Design session's `--burn-accent` token. It's deliberately not
+ * `--accent`: app chrome follows whatever theme the app wears, while a thumbnail lands in someone else's feed
+ * next to competitors, so it stays punchy and stable.
+ */
+async function houseAccent() {
+  house ??= fs
+    .readFile(path.join(ROOT, "public", "theme.css"), "utf8")
+    .then((css) => css.match(/--burn-accent:\s*(#[0-9a-f]{3,8})/i)?.[1] || DEFAULT_ACCENT)
+    .catch(() => DEFAULT_ACCENT);
+  return house;
+}
 const UPSTREAM = () => (process.env.CLIP_STUDIO_URL || "http://localhost:5173").replace(/\/$/, "");
 
 let brandCache = { at: 0, brand: null };
@@ -48,9 +63,9 @@ const absolute = (url) => (!url ? null : /^https?:/.test(url) ? url : `${UPSTREA
 /** Accent + logo the composition should use, from the brand kit. */
 export async function brandStyle({ accent, logo = false } = {}) {
   const brand = await brandKit();
-  const picked = accent || brand.colors?.find((c) => /accent|brand|primary|main/i.test(c.name || ""))?.hex || brand.colors?.[0]?.hex || DEFAULT_ACCENT;
+  const picked = accent || brand.colors?.find((c) => /accent|brand|primary|main/i.test(c.name || ""))?.hex || brand.colors?.[0]?.hex || (await houseAccent());
   const mark = logo ? brand.logos?.find((l) => /png|jpe?g|svg|webp/i.test(l.mime || l.url || "")) : null;
-  return { accent: /^#[0-9a-f]{3,8}$/i.test(picked) ? picked : DEFAULT_ACCENT, logoUrl: absolute(mark?.url) || null };
+  return { accent: /^#[0-9a-f]{3,8}$/i.test(picked) ? picked : await houseAccent(), logoUrl: absolute(mark?.url) || null };
 }
 
 /** The layout that leaves the speaker visible: text opposite the face, bottom bar when they're centred. */

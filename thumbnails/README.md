@@ -14,7 +14,10 @@ How one gets made:
    gets judged on the pictures alone.
 3. **The picture** — headless Chrome paints the layout (Anton over the still, accent word boxed, gradient scrim,
    optional brand logo and corner badge) and screenshots it at exactly 1280×720. The accent colour is the creator's
-   own, read from the Assets brand kit (`GET /api/resources/brand`) when there is one.
+   own, read from the Assets brand kit (`GET /api/resources/brand`) when there is one; otherwise the
+   `--burn-accent` token in `public/theme.css` (Design session) — the colour for burned-in artwork, which stays
+   punchy and stable instead of following the app's theme the way `--accent` does. The picture itself is always
+   white text on a dark scrim: it ends up in someone else's feed, not in the app.
 
 The tab has two views. **Videos** is one card per project with its current thumbnail and its switches.
 **All thumbnails** is every thumbnail there has ever been, newest first — the current one for each video and the

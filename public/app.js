@@ -3792,6 +3792,12 @@ function postingChip(account) {
   return `<span class="chip">Manual posting</span>`;
 }
 
+/** Connected Instagram logins that aren't a posting account yet — the ones worth offering with one click. */
+function unlinkedLogins() {
+  const have = new Set(state.accounts.filter((a) => a.platform === "instagram").map((a) => String(a.handle || "").replace(/^@+/, "").toLowerCase()));
+  return (state.igAccounts || []).filter((c) => c.username && !have.has(String(c.username).toLowerCase()));
+}
+
 function renderAccounts() {
   const upcoming = (id) => state.posts.filter((p) => p.targets.some((t) => t.accountId === id && t.status !== "published")).length;
   const body = $("#sched");
@@ -3800,6 +3806,27 @@ function renderAccounts() {
       <span class="muted">${plural(state.accounts.length, "account")} · ${plural(state.igAccounts.length, "Instagram login")} connected</span>
       <a class="btn" href="${IG_CONNECT_URL}">${avatar({ platform: "instagram" }, "sm")} Connect Instagram</a>
     </div>
+    ${
+      unlinkedLogins().length
+        ? `<section class="card ig-ready">
+            <div class="ap-head">
+              <div><h3>Your connected Instagram accounts</h3><p class="muted">These logins are connected but can't be posted to yet. Add the ones you want to post from — they publish on their own at the scheduled time.</p></div>
+              <button class="btn primary" data-add-all>${ICON.plus} Add all ${unlinkedLogins().length}</button>
+            </div>
+            <div class="ig-ready-list">
+              ${unlinkedLogins()
+                .map(
+                  (c) => `<div class="ig-ready-row">
+                    ${avatar({ platform: "instagram" }, "sm")}
+                    <span class="grow"><b>@${esc(c.username)}</b>${c.name ? `<small class="muted"> · ${esc(c.name)}</small>` : ""}</span>
+                    <button class="btn sm" data-add-login="${esc(c.username)}" data-name="${esc(c.name || c.username)}">Add</button>
+                  </div>`,
+                )
+                .join("")}
+            </div>
+          </section>`
+        : ""
+    }
     <div class="accounts-grid">
       ${state.accounts
         .map(
@@ -3833,6 +3860,33 @@ function renderAccounts() {
       </form>
     </div>
     <p class="muted note">Instagram accounts linked to a connected login post automatically at their scheduled time (match the handle to your Instagram username). Every other account moves to <b>Due now</b> on the calendar with its video and caption ready, so you can post it and mark it done.</p>`;
+
+  const addLogin = async (username, name) => {
+    await api("/api/accounts", { method: "POST", body: { platform: "instagram", name: name || username, handle: username } });
+  };
+  $$("[data-add-login]", body).forEach((btn) => (btn.onclick = async () => {
+    btn.disabled = true;
+    try {
+      await addLogin(btn.dataset.addLogin, btn.dataset.name);
+      await loadScheduler();
+      renderAccounts();
+      toast(`@${btn.dataset.addLogin} can be posted to now`);
+    } catch (err) {
+      toast(err.message);
+      btn.disabled = false;
+    }
+  }));
+  $("[data-add-all]", body)?.addEventListener("click", async (e) => {
+    e.currentTarget.disabled = true;
+    try {
+      for (const c of unlinkedLogins()) await addLogin(c.username, c.name);
+      await loadScheduler();
+      renderAccounts();
+      toast("All your Instagram accounts are ready to post to");
+    } catch (err) {
+      toast(err.message);
+    }
+  });
 
   $("#add-account").onsubmit = async (e) => {
     e.preventDefault();
@@ -3878,11 +3932,15 @@ const QUICK_TIMES = [
 /** Schedule a clip (`item`), or edit an existing `post`. */
 async function openComposer({ item, post = null }) {
   try {
-    state.accounts = await api("/api/accounts");
+    const [accounts, ig] = await Promise.all([api("/api/accounts"), api("/api/integrations/instagram/accounts").catch(() => [])]);
+    state.accounts = accounts;
+    state.igAccounts = Array.isArray(ig) ? ig : ig?.accounts || [];
   } catch (err) {
     return toast(err.message);
   }
   const accounts = state.accounts;
+  // Instagram logins that aren't posting accounts yet are offered here too: picking one sets it up on the spot.
+  const logins = unlinkedLogins();
   const when = post ? new Date(post.scheduledAt) : QUICK_TIMES[0][1]();
   const selected = new Set(post ? post.targets.map((t) => t.accountId) : accounts.length === 1 ? [accounts[0].id] : []);
   const caption = post ? post.caption : captionFor(item);
@@ -3900,10 +3958,14 @@ async function openComposer({ item, post = null }) {
         <div class="field">
           <span>Post to</span>
           ${
-            accounts.length
-              ? `<div class="account-pick">${accounts
-                  .map((a) => `<button type="button" class="acct-toggle ${selected.has(a.id) ? "on" : ""}" data-acct="${a.id}">${avatar(a, "sm")}<span>${esc(a.name)}</span></button>`)
-                  .join("")}</div>`
+            accounts.length || logins.length
+              ? `<div class="account-pick">${[
+                  ...accounts.map((a) => `<button type="button" class="acct-toggle ${selected.has(a.id) ? "on" : ""}" data-acct="${a.id}">${avatar(a, "sm")}<span>${esc(a.name)}</span></button>`),
+                  ...logins.map(
+                    (c) =>
+                      `<button type="button" class="acct-toggle" data-login="${esc(c.username)}" data-name="${esc(c.name || c.username)}" title="Connected on Instagram — pick it and it's ready to post">${avatar({ platform: "instagram" }, "sm")}<span>@${esc(c.username)}</span></button>`,
+                  ),
+                ].join("")}</div>`
               : `<div class="empty small-empty">No accounts yet. <a class="link-btn" href="#/scheduler?tab=accounts">Add an account →</a></div>`
           }
         </div>
@@ -3947,6 +4009,32 @@ async function openComposer({ item, post = null }) {
   form.date.oninput = form.time.oninput = updateHints;
   updateHints();
   updateSubmit();
+
+  // A connected Instagram login becomes a posting account the moment it's picked, so nobody has to leave this dialog.
+  $$("[data-login]", form).forEach(
+    (b) =>
+      (b.onclick = async () => {
+        b.disabled = true;
+        try {
+          const account = await api("/api/accounts", { method: "POST", body: { platform: "instagram", name: b.dataset.name, handle: b.dataset.login } });
+          state.accounts = await api("/api/accounts");
+          selected.add(account.id);
+          b.dataset.acct = account.id;
+          b.removeAttribute("data-login");
+          b.classList.add("on");
+          b.onclick = () => {
+            selected.has(account.id) ? selected.delete(account.id) : selected.add(account.id);
+            b.classList.toggle("on", selected.has(account.id));
+            updateSubmit();
+          };
+          updateSubmit();
+        } catch (err) {
+          toast(err.message);
+        } finally {
+          b.disabled = false;
+        }
+      }),
+  );
 
   $$("[data-acct]", form).forEach(
     (b) =>

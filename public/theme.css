@@ -1,59 +1,71 @@
 /* ============================================================================
-   I CLIP YOU — THEME
+   HBA CONTENT BACKEND — THEME  (light)
    The one place to change the look: fonts, colors, roundness, depth, motion.
-   Owned by the Design session. Loaded by /styles.css, so HBA Content Backend,
-   the Instagram connect page and the Music Channel all follow it.
-   Tints (soft fills, borders, glows) are mixed from these colors
-   automatically — change a color here and its tints follow.
+   Owned by the Design session. Loaded by /styles.css, so every page —
+   the app, Instagram connect, Music, Analytics, Assets, the editor —
+   follows it. Tints (soft fills, borders, glows) are mixed from these
+   colors automatically, so changing one here updates its tints too.
    ========================================================================== */
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Caveat:wght@600&display=swap");
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
   /* ---- Type ---- */
   --font: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;  /* timecodes, scores, counts */
-  --hand: "Caveat", "Bradley Hand", cursive;                        /* hero doodles */
+  --hand: "Caveat", "Bradley Hand", cursive;                       /* hero doodles */
 
-  /* ---- Backgrounds, darkest → lightest ---- */
-  --bg: #08080a;          /* page */
-  --bg-deep: #050506;     /* video wells behind players */
-  --surface: #101012;     /* cards, panels, modals */
-  --surface-2: #18181b;   /* inputs, rows inside cards */
-  --surface-3: #232327;   /* selected tab, hover fills */
-  --track-off: #2c2c31;   /* switch track when off */
+  /* ---- Backgrounds, page → raised ---- */
+  --bg: #f2f1ef;          /* page */
+  --surface: #ffffff;     /* cards, panels, modals */
+  --surface-2: #f6f5f3;   /* inputs, rows inside cards */
+  --surface-3: #eceae6;   /* selected tab, hover fills */
+  --track-off: #d8d6d1;   /* switch track when off */
+  --bg-deep: #0e0e10;     /* video wells and player backdrops stay dark */
 
   /* ---- Lines ---- */
-  --line: rgba(255, 255, 255, 0.06);    /* hairline borders, dividers */
-  --line-2: rgba(255, 255, 255, 0.1);   /* stronger borders, focus */
-  --line-3: rgba(255, 255, 255, 0.18);  /* hover borders */
+  --line: rgba(16, 16, 18, 0.08);    /* hairline borders, dividers */
+  --line-2: rgba(16, 16, 18, 0.13);  /* stronger borders, focus */
+  --line-3: rgba(16, 16, 18, 0.24);  /* hover borders */
 
   /* ---- Text ---- */
-  --text: #f4f4f5;        /* headings, primary text */
-  --text-2: #d4d4d8;      /* long body copy */
-  --muted: #a1a1aa;       /* secondary labels */
-  --faint: #71717a;       /* hints, meta */
+  --text: #101012;        /* headings, primary text */
+  --text-2: #3c3c42;      /* long body copy */
+  --muted: #6b6b74;       /* secondary labels */
+  --faint: #92929b;       /* hints, meta */
 
   /* ---- Main buttons (Render, Save, Create) ---- */
-  --primary: #f4f4f5;
-  --primary-ink: #09090b;
-  --primary-hover: #ffffff;
+  --primary: #232326;
+  --primary-ink: #ffffff;
+  --primary-hover: #101012;
 
-  /* ---- Brand accent: logo, today, progress, switches, badges — used sparingly.
+  /* ---- Accent: switches, progress, live states, top scores — used sparingly.
           Selected tabs and options stay monochrome. ---- */
-  --accent: #ef3340;
+  --accent: #6d5cf5;
   --accent-ink: #ffffff;  /* text on top of the accent */
-  --accent-hover: color-mix(in srgb, var(--accent) 78%, white);
-  --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
+  --accent-hover: color-mix(in srgb, var(--accent) 82%, black);
+  --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
+
+  /* ---- Brand gradient: logo, headline words, celebratory bits ---- */
+  --grad-1: #4f8ef7;      /* blue */
+  --grad-2: #a06cf0;      /* violet */
+  --grad-3: #f4569b;      /* pink */
+  --grad-4: #ff8a3d;      /* orange */
+  --grad: linear-gradient(95deg, var(--grad-1), var(--grad-2) 38%, var(--grad-3) 68%, var(--grad-4));
+
+  /* ---- Burned-in artwork (YouTube thumbnails, captions over video).
+          Separate from --accent on purpose: this lands on other people's
+          feeds, so it stays punchy whatever the app chrome looks like. ---- */
+  --burn-accent: #ef3340;
 
   /* ---- Status ---- */
-  --positive: #34d399;    /* ready, posted, growth, top scores */
-  --danger: #f87171;      /* errors, delete, failed posts */
-  --warn: #fbbf24;        /* "due now", warnings */
-  --warn-text: #fde68a;   /* text inside warning banners */
-  --info: #93a8ff;        /* scheduled posts */
-  --pending: #b69cff;     /* publishing in progress */
+  --positive: #16a34a;    /* done, published, good deltas */
+  --danger: #dc2626;      /* errors, delete, failed posts */
+  --warn: #d97706;        /* "due now", warnings */
+  --warn-text: #92400e;   /* text inside warning banners */
+  --info: #2563eb;        /* scheduled posts */
+  --pending: #7c3aed;     /* publishing in progress */
 
   /* ---- Shape ---- */
   --radius: 22px;         /* cards, modals */
@@ -61,10 +73,10 @@
   --radius-sm: 10px;      /* inputs, small controls */
   --pill: 999px;          /* buttons, chips, tabs */
 
-  /* ---- Depth ---- */
-  --highlight: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 40px 100px -24px rgba(0, 0, 0, 0.75);
+  /* ---- Depth: soft and low-contrast, like paper ---- */
+  --highlight: 0 1px 2px rgba(16, 16, 18, 0.04);
+  --shadow-sm: 0 1px 2px rgba(16, 16, 18, 0.06);
+  --shadow-lg: 0 30px 70px -22px rgba(16, 16, 18, 0.24);
 
   /* ---- Motion ---- */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);

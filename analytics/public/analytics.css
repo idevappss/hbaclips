@@ -130,7 +130,7 @@ a.an-row:hover { background: var(--surface-2); }
 .an-num.good { color: var(--positive); }
 
 /* ---- add dialog ---- */
-.an-backdrop { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 20px; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(3px); }
+.an-backdrop { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: 20px; background: rgba(16, 16, 18, 0.45); backdrop-filter: blur(3px); }
 .an-modal { display: flex; width: min(520px, 100%); flex-direction: column; gap: 14px; padding: 22px; box-shadow: var(--shadow-lg); }
 .an-modal-head { display: flex; align-items: center; justify-content: space-between; }
 .an-modal-head b { font-size: 17px; font-weight: 600; }
