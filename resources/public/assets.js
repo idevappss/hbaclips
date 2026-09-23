@@ -187,7 +187,7 @@ function detail(it, root) {
         ${it.url ? `<a class="btn sm" href="${esc(it.url)}" target="_blank" rel="noopener">${ICON.link} Open link</a>` : ""}
         ${it.fileUrl ? `<a class="btn sm" href="${esc(it.fileUrl)}${it.builtin ? "" : "?download"}" ${it.builtin ? "download" : ""}>${ICON.download} Download</a>` : ""}
         <span class="spacer"></span>
-        ${it.builtin ? `<span class="muted small">Built in — ships with HBA Clips</span>` : `
+        ${it.builtin ? `<span class="muted small">Built in — ships with HBA Content Backend</span>` : `
           <button class="btn sm ghost" data-act="pin">${it.pinned ? "Unpin" : "Pin"}</button>
           <button class="btn sm danger" data-act="delete">Delete</button>
           <button class="btn sm primary" data-act="edit">Edit</button>`}

@@ -26,6 +26,7 @@ const PAGES = [
   ["Study", "#/study", "References and taste"],
   ["Titles", "#/titles", "Saved titles and ideas"],
   ["Sounds", "#/sounds", "Music library"],
+  ["Thumbnails", "#/thumbnails", "Video thumbnails"],
   ["Assets", "#/assets", "Brand kit and resources"],
   ["Scheduler", "#/scheduler", "Review clips"],
   ["Calendar", "#/scheduler?tab=calendar", "Scheduled posts"],

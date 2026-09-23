@@ -141,7 +141,7 @@ function publicItem(item, base) {
 }
 
 // ---------------------------------------------------------------------------
-// Built in: the fonts and effect blocks already bundled with HBA Clips in assets/, shown read-only.
+// Built in: the fonts and effect blocks already bundled with HBA Content Backend in assets/, shown read-only.
 
 async function builtins() {
   const out = [];
@@ -153,7 +153,7 @@ async function builtins() {
       builtin: true,
       type: "font",
       title: `${family[0].toUpperCase()}${family.slice(1)} ${weight || ""}`.trim(),
-      notes: "Bundled with HBA Clips for captions and titles.",
+      notes: "Bundled with HBA Content Backend for captions and titles.",
       tags: ["built-in"],
       font: { family: `${family[0].toUpperCase()}${family.slice(1)}`, weight: Number(weight) || 400 },
       file: { name, stored: name, mime: "font/woff2" },
@@ -167,7 +167,7 @@ async function builtins() {
       builtin: true,
       type: /overlay|leak|flash/.test(name) ? "transition" : "title-animation",
       title: label[0].toUpperCase() + label.slice(1),
-      notes: "HyperFrames block bundled with HBA Clips (assets/registry).",
+      notes: "HyperFrames block bundled with HBA Content Backend (assets/registry).",
       tags: ["built-in", "hyperframes"],
       file: { name, stored: name, mime: name.endsWith(".html") ? "text/html" : "text/javascript" },
       fileUrl: `/studio-assets/registry/${name}`,

@@ -1,4 +1,4 @@
-// "Credits left" chip for HBA Clips's top bar. It renders into <span id="credits"></span> and links to the
+// "Credits left" chip for HBA Content Backend's top bar. It renders into <span id="credits"></span> and links to the
 // Integrations page. Include with: <script type="module" src="/api/integrations/ui/credits.js"></script>
 const host = document.getElementById("credits");
 

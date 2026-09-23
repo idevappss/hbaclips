@@ -1,7 +1,7 @@
 // The edit plan contract ("edit-plan/1", documented in shared/EDIT_PLAN.md). It's the internal plan from
 // timeline.buildPlan() with every field unchanged, plus resolved additions (motion samples, effect cues, grade
 // params, text styles, audio automation, paths) so a renderer never has to re-decide anything.
-// HBA Clips renders it with HyperFrames; render.js renders the same plan with ffmpeg. The motion and effect
+// HBA Content Backend renders it with HyperFrames; render.js renders the same plan with ffmpeg. The motion and effect
 // math here mirrors render.js; keep the two in step. Within edit-plan/1, changes are additive only.
 import path from "node:path";
 import { fileURLToPath } from "node:url";

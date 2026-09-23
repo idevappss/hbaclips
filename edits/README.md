@@ -6,10 +6,10 @@ Music-synced montage edits with transitions, effects, color grades, text and sou
 clips ─► analyze (moments, motion, exposure, color, loudness, contact sheets, speech)
 song  ─► beats (tempo, beat grid, bars, energy, drop)           ┐
 style ideas + ratings ─► recipes + STYLE.md                     ├─► director (Claude, or heuristic) ─► timeline ─► render (ffmpeg)
-HBA Clips title taste (titles/) ──────────────────────────────┘
+HBA Content Backend title taste (titles/) ──────────────────────────────┘
 ```
 
-- **Analyze** (`analyze.js`) scans every source, splits it into moments, scores them, and builds labeled contact sheets so Claude can see the footage. Long sources are scanned on keyframes. Speech is transcribed with Whisper only when dialogue can make it into the edit, and a HBA Clips project's existing `words.json` is reused.
+- **Analyze** (`analyze.js`) scans every source, splits it into moments, scores them, and builds labeled contact sheets so Claude can see the footage. Long sources are scanned on keyframes. Speech is transcribed with Whisper only when dialogue can make it into the edit, and a HBA Content Backend project's existing `words.json` is reused.
 - **Beats** (`beats.js`) is pure JS: spectral-flux onsets, tempo by autocorrelation, dynamic-programming beat tracking, downbeats, loudness per bar, and the drop. It also suggests where to start the song so the drop lands early in the edit.
 - **Director** (`director.js`) writes a shot-by-shot plan with source moments, beats per shot, speed moves, effects, transitions, word slams, focus for cropping, look and title. With `ANTHROPIC_API_KEY` it uses `claude-opus-5` with the contact sheets. Without one, a beat-aware heuristic uses the blended style recipe.
 - **Timeline** (`timeline.js`) snaps the plan to the beat grid, frame-quantizes it, computes transition overlaps and source windows, and places captions, text and SFX cues (whooshes on whips, an impact on flashes, a riser into the drop).
@@ -43,11 +43,11 @@ Each idea is modeled into a **recipe**: energy, beats per shot, weighted transit
 node edits/server.js        # → http://localhost:5190
 ```
 
-Needs what HBA Clips needs. Whisper (via HyperFrames) is only used for dialogue. Run either this standalone server or the version mounted in HBA Clips, not both at once: they'd share the job queue on disk.
+Needs what HBA Content Backend needs. Whisper (via HyperFrames) is only used for dialogue. Run either this standalone server or the version mounted in HBA Content Backend, not both at once: they'd share the job queue on disk.
 
 ## Planning for other renderers
 
-HBA Clips renders dope edits with HyperFrames from a fully resolved plan: `createEditsIntegration({ render: false })`, then `planEdit()` / `waitForPlan()` or `POST /api/plans`. The contract is **`shared/EDIT_PLAN.md`** (`edit-plan/1`, built by `contract.js`). The standalone server keeps rendering with ffmpeg for testing.
+HBA Content Backend renders dope edits with HyperFrames from a fully resolved plan: `createEditsIntegration({ render: false })`, then `planEdit()` / `waitForPlan()` or `POST /api/plans`. The contract is **`shared/EDIT_PLAN.md`** (`edit-plan/1`, built by `contract.js`). The standalone server keeps rendering with ffmpeg for testing.
 
 ## Hooks for ENGINE (one-time, `server.js`)
 
@@ -88,7 +88,7 @@ Rendered files are served at `/edits/media/<editId>/v<n>.mp4`.
 | `POST /api/edits/:id/feedback` | `{ version, rating: fire\|good\|meh, note }` | |
 | `DELETE /api/edits/:id` | | |
 | `GET /api/sounds` | | tracks from the shared sound library (`data/sounds.json`) |
-| `GET /api/clip-studio/projects` | | HBA Clips videos usable as sources (no copy) |
+| `GET /api/clip-studio/projects` | | HBA Content Backend videos usable as sources (no copy) |
 | `GET/POST /api/ideas`, `PATCH/DELETE /api/ideas/:id`, `POST /api/ideas/:id/remodel` | multipart `files[]`, `title`, `notes`, `url` | style ideas |
 | `GET /api/style`, `POST /api/style/refresh` | | STYLE.md |
 

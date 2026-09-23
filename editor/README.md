@@ -4,7 +4,7 @@
 
 - **Opens at** `#/edit/<projectId>/<clipId>`. `public/app.js` routes there and imports `/api/editor/ui/editor.js`.
 - **API** mounted by `server.js` at `/api/editor`.
-- **Dev server:** `node editor/dev.js` → http://localhost:5193. It serves `public/` from disk, mounts this router, and proxies everything else to HBA Clips on 5173.
+- **Dev server:** `node editor/dev.js` → http://localhost:5193. It serves `public/` from disk, mounts this router, and proxies everything else to HBA Content Backend on 5173.
 
 ## Model
 

@@ -1,4 +1,4 @@
-// Music Channel drop-in for HBA Clips. Adds "Save this sound?" to every studied video on the Study tab,
+// Music Channel drop-in for HBA Content Backend. Adds "Save this sound?" to every studied video on the Study tab,
 // and exposes window.musicChannel.mount(el) for the "From your studies" section of the Sounds page.
 // Owned by the MUSIC session.
 const API = new URL("..", import.meta.url).pathname.replace(/\/$/, ""); // this file is served from <API>/ui/
@@ -324,7 +324,7 @@ function mount(el, { standalone = false } = {}) {
 
 window.musicChannel = { mount };
 
-// ---------- styles (built on HBA Clips's tokens) ----------
+// ---------- styles (built on HBA Content Backend's tokens) ----------
 const style = document.createElement("style");
 style.textContent = `
 .music-ask { display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 10px; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-2); box-shadow: var(--highlight); transition: border-color var(--fast) var(--ease), background var(--fast) var(--ease); }

@@ -1,41 +1,43 @@
-// Dev server for the Assets tab (port 5194). Serves HBA Content Backend's page from disk with the Assets nav link and route
-// patched in (the same hooks ENGINE adds for real, see resources/README.md), mounts this router, and proxies
-// everything else to the running HBA Content Backend server on 5173, which it never restarts.
-//   node resources/dev.js   → http://localhost:5194/#/assets
+// Dev server for the Thumbnails tab (port 5196). Serves HBA Content Backend's page from disk with the Thumbnails nav
+// link and route patched in (the same hooks ENGINE adds for real, see thumbnails/README.md), mounts this
+// router, and proxies everything else to the running HBA Content Backend server on 5173, which it never restarts.
+//   node thumbnails/dev.js   → http://localhost:5196/#/thumbnails
 import fs from "node:fs/promises";
 import path from "node:path";
 import { Readable } from "node:stream";
 import dotenv from "dotenv";
 import express from "express";
 import { ROOT } from "../lib/tools.js";
-import { router } from "./index.js";
+import thumbnails from "./index.js";
 
 dotenv.config({ path: path.join(ROOT, ".env"), quiet: true });
-const PORT = Number(process.env.ASSETS_PORT) || 5194;
+const PORT = Number(process.env.THUMBNAILS_PORT) || 5196;
 const UPSTREAM = process.env.CLIP_STUDIO_URL || "http://localhost:5173";
 
-export const NAV_LINK = `<a href="#/assets" data-nav="assets"><svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="7" height="7" rx="1.5" /><rect x="13.5" y="4" width="7" height="7" rx="1.5" /><rect x="3.5" y="14" width="7" height="7" rx="1.5" /><circle cx="17" cy="17.5" r="3.5" /></svg>Assets</a>`;
-export const ROUTE = `if (pathPart.startsWith("/assets")) {
-    $$("[data-nav]").forEach((a) => a.classList.toggle("on", a.dataset.nav === "assets"));
-    const { mountAssets } = await import("/api/resources/ui/assets.js");
-    await mountAssets(app);
+export const NAV_LINK = `<a href="#/thumbnails" data-nav="thumbnails"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="2" /><circle cx="9" cy="10" r="1.6" /><path d="m4 17 4.5-4.5L12 16l3-3 5 5" /></svg>Thumbnails</a>`;
+export const ROUTE = `if (pathPart.startsWith("/thumbnails")) {
+    $$("[data-nav]").forEach((a) => a.classList.toggle("on", a.dataset.nav === "thumbnails"));
+    const { mountThumbnails } = await import("/api/thumbnails/ui/thumbnails.js");
+    await mountThumbnails(app);
     window.scrollTo(0, 0);
     return;
   }
   `;
 
 const app = express();
-app.use("/api/resources", router);
+app.use("/api/thumbnails", thumbnails.router);
 const noCache = (res) => res.set("Cache-Control", "no-store");
 
 app.get(["/", "/index.html"], async (_req, res) => {
   let html = await fs.readFile(path.join(ROOT, "public", "index.html"), "utf8");
-  if (!html.includes('href="#/assets"')) html = html.replace(/(<a href="#\/sounds"[^\n]*Sounds<\/a>)/, (m) => `${m}\n        ${NAV_LINK}`);
+  if (!html.includes('href="#/thumbnails"')) {
+    html = html.replace(/(<a href="#\/titles" data-nav="titles"[^\n]*<\/a>)/, (m) => `${m}\n        ${NAV_LINK}`);
+  }
   noCache(res).type("html").send(html);
 });
 app.get("/app.js", async (_req, res) => {
   let js = await fs.readFile(path.join(ROOT, "public", "app.js"), "utf8");
-  if (!js.includes("/api/resources/ui/assets.js")) js = js.replace(/(\n  const projectMatch = pathPart\.match)/, (m) => `\n  ${ROUTE.trimEnd()}${m}`);
+  if (!js.includes("/api/thumbnails/ui/thumbnails.js")) js = js.replace(/(\n  const projectMatch = pathPart\.match)/, (m) => `\n  ${ROUTE.trimEnd()}${m}`);
   noCache(res).type("js").send(js);
 });
 app.use(express.static(path.join(ROOT, "public"), { setHeaders: noCache }));
@@ -66,4 +68,5 @@ app.use(async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`\n  Assets (dev) → http://localhost:${PORT}/#/assets  (proxying ${UPSTREAM})\n`));
+thumbnails.start();
+app.listen(PORT, () => console.log(`\n  Thumbnails (dev) → http://localhost:${PORT}/#/thumbnails  (proxying ${UPSTREAM})\n`));

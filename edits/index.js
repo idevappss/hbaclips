@@ -23,7 +23,7 @@ const AUDIO_RE = /\.(mp3|wav|m4a|aac|flac|ogg|opus|aiff?)$/i;
 const BUSY = ["queued", "analyzing", "directing", "rendering"];
 
 // The shared sound library (lib/sounds.js, data/sounds/). Read straight from disk on every call: lib/sounds.js
-// caches its database per process, so writing through it from a second server would clobber HBA Clips's copy.
+// caches its database per process, so writing through it from a second server would clobber HBA Content Backend's copy.
 const SOUNDS_JSON = path.join(ROOT, "data", "sounds.json");
 const SOUNDS_DIR = path.join(ROOT, "data", "sounds");
 async function soundTracks() {
@@ -64,7 +64,7 @@ export function normalizeOptions(input = {}, { hasMusic = false, sources = [] } 
 const queue = [];
 const running = new Map(); // editId → { controller }
 let pumping = false;
-// false when a host (HBA Clips) renders plans itself: jobs stop once the plan is ready.
+// false when a host (HBA Content Backend) renders plans itself: jobs stop once the plan is ready.
 let defaultRender = true;
 
 /** Who asked for a job: method, URL, referring page and client, kept on the edit for tracing. */
@@ -122,7 +122,7 @@ async function gather(edit, { signal, set }) {
   const scanned = [];
   for (const [k, src] of edit.sources.entries()) {
     const file = sourcePath(edit, src);
-    // HBA Clips projects are analyzed once and shared by every edit that uses them (moment ids carry the letter).
+    // HBA Content Backend projects are analyzed once and shared by every edit that uses them (moment ids carry the letter).
     const workDir = src.projectId ? path.join(DATA_DIR, "analysis", `project-${src.projectId}`, src.letter) : path.join(dir, "analysis", src.letter);
     const a = await analyzeSource(file, workDir, {
       letter: src.letter,
@@ -279,13 +279,13 @@ function newEditRecord({ id, sources, music, input }) {
 
 async function projectSource(projectId, letter) {
   const p = await fs.readFile(path.join(PROJECTS_DIR, String(projectId), "project.json"), "utf8").then(JSON.parse, () => null);
-  if (!p?.source?.file) throw new Error(`HBA Clips project ${projectId} not found.`);
+  if (!p?.source?.file) throw new Error(`HBA Content Backend project ${projectId} not found.`);
   return { letter, name: p.name, file: path.join(PROJECTS_DIR, p.id, p.source.file), projectId: p.id, size: p.source.size };
 }
 
 /**
  * Start planning an edit (no rendering). Resolves right away with the queued edit; use waitForPlan() or poll.
- * @param projectIds  HBA Clips projects to use as sources (source video + transcript reused, nothing copied)
+ * @param projectIds  HBA Content Backend projects to use as sources (source video + transcript reused, nothing copied)
  * @param files       [{ path, name? }] other local videos (programmatic use only)
  * @param trackId     sound library track (data/sounds.json)
  * @param musicFile   { path, name? } a local song instead (programmatic use only)
@@ -339,7 +339,7 @@ export async function waitForPlan(editId, { timeoutMs = 15 * 60_000, signal } = 
 // ---------------------------------------------------------------------------
 // Integration surface
 
-/** Finished edits, newest first — for HBA Clips's scheduler library. */
+/** Finished edits, newest first — for HBA Content Backend's scheduler library. */
 export async function libraryItems() {
   const items = [];
   for (const edit of await listEdits()) {
@@ -396,7 +396,7 @@ const summary = (e) => ({
 });
 
 /**
- * @param sounds  optional { addTrack } from lib/sounds.js. Pass it when mounting inside HBA Clips's process so
+ * @param sounds  optional { addTrack } from lib/sounds.js. Pass it when mounting inside HBA Content Backend's process so
  *                songs uploaded here join the shared sound library; without it they stay with their edit.
  */
 export function createEditsIntegration({ sounds, render = true } = {}) {

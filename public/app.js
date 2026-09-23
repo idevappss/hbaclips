@@ -169,6 +169,13 @@ async function route() {
     unmountEditor = await mountEditor(app, { projectId: editMatch[1], clipId: editMatch[2] });
     return;
   }
+  // Intentional reels: the questions to ask him on camera, from everything the system has read.
+  if (pathPart.startsWith("/reels")) {
+    $$("[data-nav]").forEach((a) => a.classList.toggle("on", a.dataset.nav === "reels"));
+    await showReels();
+    window.scrollTo(0, 0);
+    return;
+  }
   // Analytics: how posted clips and channels are doing (analytics/, owned by the Analytics session).
   if (pathPart.startsWith("/analytics")) {
     $$("[data-nav]").forEach((a) => a.classList.toggle("on", a.dataset.nav === "analytics"));
@@ -182,6 +189,14 @@ async function route() {
     $$("[data-nav]").forEach((a) => a.classList.toggle("on", a.dataset.nav === "assets"));
     const { mountAssets } = await import("/api/resources/ui/assets.js");
     await mountAssets(app);
+    window.scrollTo(0, 0);
+    return;
+  }
+  // Thumbnails: the thumbnail made for every video (thumbnails/, owned by the Thumbnails session).
+  if (pathPart.startsWith("/thumbnails")) {
+    $$("[data-nav]").forEach((a) => a.classList.toggle("on", a.dataset.nav === "thumbnails"));
+    const { mountThumbnails } = await import("/api/thumbnails/ui/thumbnails.js");
+    await mountThumbnails(app);
     window.scrollTo(0, 0);
     return;
   }
@@ -1456,6 +1471,7 @@ function renderReady(p) {
             ? `<button id="captions-redo" class="btn ghost" ${p.captions?.status === "running" ? "disabled" : ""}>${p.captions?.status === "running" ? "Improving captions…" : "Improve captions"}</button>`
             : ""
         }
+        <button id="retitle" class="btn ghost" title="Rewrite every clip's headline and posting copy from what the clip says, for practice owners. The cuts stay as they are.">Rewrite titles</button>
         <button id="repick" class="btn ghost" title="Pick this video's clips again with the latest engine, check each one makes sense, and render the ones that hold up. Clips you edited on the timeline stay." ${p.repick?.status === "picking" ? "disabled" : ""}>${p.repick?.status === "picking" ? "Re-picking…" : "Re-pick clips"}</button>
         <button id="render-all" class="btn primary">Render all</button>
         <button class="icon-btn head-delete" data-delete-project="${p.id}" data-name="${esc(p.name)}" title="Delete project">${ICON.trash}</button>
@@ -2648,6 +2664,24 @@ function bindReady(p) {
     patchHead();
   };
 
+  $("#retitle").onclick = async (e) => {
+    const note = prompt("Anything the new titles should do? (optional)\n\ne.g. lead with the number, speak to chiropractors, name the mistake", "") ?? null;
+    if (note === null) return;
+    const button = e.currentTarget;
+    button.disabled = true;
+    button.textContent = "Rewriting…";
+    try {
+      const out = await api(`/api/projects/${p.id}/clips/retitle`, { method: "POST", body: { note } });
+      state.project.clips = out.clips;
+      renderProject();
+      toast(`Rewrote ${plural(out.rewritten.length, "title")} — re-render a clip to burn the new headline in`);
+    } catch (err) {
+      toast(err.message);
+      button.disabled = false;
+      button.textContent = "Rewrite titles";
+    }
+  };
+
   $("#repick").onclick = async () => {
     if (!confirm("Pick this video's clips again with the latest engine?\n\nEach new pick is checked before it renders. Clips you edited on the timeline stay; the others are replaced.")) return;
     try {
@@ -3146,6 +3180,125 @@ async function refreshScheduler() {
   renderSchedulerTab(currentSchedulerTab());
 }
 
+// ---------- intentional reels (lib/intentional.js) ----------
+
+const REEL_STATUS = [["new", "To ask"], ["asked", "Asked"], ["filmed", "Filmed"], ["skipped", "Skipped"]];
+
+async function showReels() {
+  app.innerHTML = `
+    <div class="page-head">
+      <div><h1>Intentional reels</h1><p class="muted">Instead of hunting clips in footage you already have, this reads everything it has learned about your audience and about Dr Odell, and writes the questions to ask him on camera — each one already shaped into a reel.</p></div>
+    </div>
+    <section class="card reels-top" id="reels-top"></section>
+    <div id="reels-list"><div class="loading">Loading…</div></div>`;
+  await renderReels();
+}
+
+async function renderReels() {
+  const data = await api("/api/intentional").catch(() => null);
+  const top = $("#reels-top");
+  const list = $("#reels-list");
+  if (!data || !top) return;
+  const filter = (state.reelFilter ||= "new");
+  const counts = Object.fromEntries(REEL_STATUS.map(([id]) => [id, data.questions.filter((q) => q.status === id).length]));
+
+  top.innerHTML = `
+    <div class="ap-head">
+      <div>
+        <h3>What it has read</h3>
+        <p class="muted">${data.knows.audience ? esc((data.knows.sources || []).join(", ")) : "Nothing yet — add a workshop, client call or SOP on the Projects page first."}${data.lastRunAt ? ` · last batch ${agoLabel(data.lastRunAt)}` : ""}</p>
+      </div>
+      <label class="btn"><input id="reels-src" type="file" accept=".vtt,.srt,.txt,.md,.docx,.pdf" hidden />${ICON.upload} Feed it more</label>
+    </div>
+    <div class="ap-row">
+      <label class="field"><span>How many questions</span><input type="number" id="reels-count" min="3" max="15" value="8" /></label>
+      <label class="field ap-accounts"><span>Anything this batch should focus on? <em>· optional</em></span><input id="reels-note" placeholder="e.g. his story before HBA, the van, hiring, AI in the practice" /></label>
+    </div>
+    <div class="clip-actions"><button class="btn primary" id="reels-go">Write questions</button><span class="render-msg" id="reels-msg"></span></div>`;
+
+  const chips = REEL_STATUS.map(([id, label]) => `<button data-reel-filter="${id}" class="${id === filter ? "on" : ""}">${label}<span>${counts[id] || ""}</span></button>`).join("");
+  const shown = data.questions.filter((q) => q.status === filter);
+  list.innerHTML = `
+    <div class="toolbar"><div class="segmented" id="reel-filters">${chips}</div><span class="muted">${plural(data.questions.length, "question")} in total</span></div>
+    ${
+      shown.length
+        ? `<div class="reel-grid">${shown.map(reelCard).join("")}</div>`
+        : `<div class="empty">${filter === "new" ? "No questions waiting. Write a batch above." : `Nothing ${filter} yet.`}</div>`
+    }`;
+
+  $$("[data-reel-filter]", list).forEach((b) => (b.onclick = () => {
+    state.reelFilter = b.dataset.reelFilter;
+    renderReels();
+  }));
+  $$("[data-reel-status]", list).forEach((b) => (b.onclick = async () => {
+    try {
+      await api(`/api/intentional/${b.dataset.id}`, { method: "PATCH", body: { status: b.dataset.reelStatus } });
+      renderReels();
+    } catch (err) {
+      toast(err.message);
+    }
+  }));
+  $$("[data-reel-copy]", list).forEach((b) => (b.onclick = () => copy(b.dataset.reelCopy)));
+  $$("[data-reel-delete]", list).forEach((b) => (b.onclick = async () => {
+    await api(`/api/intentional/${b.dataset.id}`, { method: "DELETE" }).catch((err) => toast(err.message));
+    renderReels();
+  }));
+
+  $("#reels-go").onclick = async (e) => {
+    const button = e.currentTarget;
+    button.disabled = true;
+    $("#reels-msg").textContent = "Reading everything it knows and writing…";
+    try {
+      const out = await api("/api/intentional/generate", { method: "POST", body: { count: Number($("#reels-count").value) || 8, note: $("#reels-note").value } });
+      state.reelFilter = "new";
+      toast(`${plural(out.added.length, "question")} ready to ask`);
+      renderReels();
+    } catch (err) {
+      toast(err.message);
+      $("#reels-msg").textContent = err.message;
+      button.disabled = false;
+    }
+  };
+  $("#reels-src").onchange = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    $("#reels-msg").textContent = `Reading ${file.name}…`;
+    const body = new FormData();
+    body.append("file", file);
+    try {
+      const res = await fetch("/api/audience/sources", { method: "POST", body });
+      const out = await res.json();
+      if (!res.ok) throw new Error(out.error || "Couldn't read that file");
+      toast("Learned — write a new batch to use it");
+      renderReels();
+    } catch (err) {
+      toast(err.message);
+      $("#reels-msg").textContent = err.message;
+    }
+  };
+}
+
+function reelCard(q) {
+  const ask = `${q.question}${q.follow_up ? `\n\nFollow-up: ${q.follow_up}` : ""}`;
+  return `
+    <article class="card reel-card">
+      <div class="clip-top"><span class="score-pill ${q.priority >= 85 ? "hot" : ""}">${q.priority}</span><span>${esc(q.who || "")}</span></div>
+      <h3 class="reel-q">${esc(q.question)}</h3>
+      ${q.follow_up ? `<p class="reel-follow"><b>Follow-up:</b> ${esc(q.follow_up)}</p>` : ""}
+      <dl class="reel-meta">
+        <dt>Answers</dt><dd>${esc(q.answers || "")}</dd>
+        <dt>Angle</dt><dd>${esc(q.angle || "")}</dd>
+        <dt>Hook</dt><dd>“${esc(q.hook || "")}”</dd>
+        <dt>Title</dt><dd>${esc(q.title || "")}</dd>
+      </dl>
+      <div class="clip-actions">
+        <button class="btn sm" data-reel-copy="${esc(ask)}">${ICON.copy} Copy question</button>
+        ${REEL_STATUS.filter(([id]) => id !== q.status).map(([id, label]) => `<button class="btn sm ghost" data-reel-status="${id}" data-id="${q.id}">${label}</button>`).join("")}
+        <button class="icon-btn" data-reel-delete data-id="${q.id}" title="Remove">${ICON.trash}</button>
+      </div>
+    </article>`;
+}
+
 /** Who the clips are for: the brief learned from the creator's workshops and client calls (lib/audience.js). */
 async function renderAudience() {
   const box = $("#audience");
@@ -3164,7 +3317,7 @@ async function renderAudience() {
             : "Add a workshop deck or a client call transcript and it learns who you're talking to — then every clip is picked to answer what they actually ask."
         }</p>
       </div>
-      <label class="btn"><input id="aud-file" type="file" accept=".vtt,.srt,.txt,.md,.docx" hidden />${ICON.upload} Add a call or deck</label>
+      <label class="btn"><input id="aud-file" type="file" accept=".vtt,.srt,.txt,.md,.docx,.pdf" hidden />${ICON.upload} Add a call or deck</label>
     </div>
     ${
       b

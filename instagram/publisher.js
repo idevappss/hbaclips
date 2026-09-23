@@ -1,4 +1,4 @@
-// Publishes one HBA Clips post to one Instagram account: container → upload → processing → publish.
+// Publishes one HBA Content Backend post to one Instagram account: container → upload → processing → publish.
 //
 // publish() is idempotent per (post.id, account.id). Each step is saved as it happens, so calling again —
 // an overlapping scheduler tick, or a retry after a restart — resumes the earlier attempt or returns its
@@ -22,7 +22,7 @@ export class PublishError extends Error {
 
 const cleanHandle = (handle) => String(handle || "").trim().replace(/^@+/, "").toLowerCase();
 
-/** The connected Instagram login behind a HBA Clips account: by igUserId, else by matching handle. */
+/** The connected Instagram login behind a HBA Content Backend account: by igUserId, else by matching handle. */
 export function findConnection(connections, account) {
   if (!account) return null;
   if (account.igUserId) return connections.find((c) => c.id === String(account.igUserId)) || null;

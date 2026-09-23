@@ -9,7 +9,9 @@ import { FFMPEG, ROOT, PROJECTS_DIR, run } from "./lib/tools.js";
 import { analyze, clipLengths, describeClaudeError, hasClaudeKey, packAnalysis, resolveClips } from "./lib/analyze.js";
 import { clipTaste, learnTaste, moreLikeThisNote, recordClipFeedback } from "./lib/cliptaste.js";
 import { LONG_FORMATS, normalizeLongDesign } from "./lib/longedit.js";
-import { clearAudience, getAudience, ingestSource, readSource } from "./lib/audience.js";
+import { clearAudience, getAudience, ingestSource, readSourceParts } from "./lib/audience.js";
+import { retitleClip } from "./lib/retitle.js";
+import { generateQuestions, listQuestions, removeQuestion, setStatus as setQuestionStatus } from "./lib/intentional.js";
 import { getSettings as autoPostSettings, runAutoPost, startAutoPost, updateSettings as updateAutoPost } from "./lib/autopost.js";
 import { preflight, repairsFor, scoreReview, sensePass } from "./lib/review.js";
 import { readSavedDocument } from "./editor/document.js";
@@ -91,6 +93,7 @@ import { router as musicRouter } from "./music/index.js";
 import { router as editorRouter } from "./editor/index.js";
 import { router as resourcesRouter } from "./resources/index.js";
 import analytics from "./analytics/index.js";
+import thumbnails from "./thumbnails/index.js";
 import {
   CAN_PUBLISH,
   PUBLISHERS,
@@ -146,6 +149,10 @@ app.use("/api/resources", resourcesRouter);
 // Analytics: how posted clips and channels are doing (analytics/, owned by the Analytics session).
 app.use("/api/analytics", analytics.router);
 analytics.start();
+// Thumbnails: a 1280×720 thumbnail made for every video while it transcribes (thumbnails/, owned by the
+// Thumbnails session; see thumbnails/README.md). start() is the watcher — the tab's switches turn it off.
+app.use("/api/thumbnails", thumbnails.router);
+thumbnails.start();
 // Dope edits planner (edits/, DOPE CLIPS session; shared/EDIT_PLAN.md). It only plans here: lib/dope.js +
 // lib/editplan.js preview and render its plans with HyperFrames.
 const editsPlanner = createEditsIntegration({ sounds: { addTrack }, render: false });
@@ -1034,6 +1041,12 @@ app.delete("/api/accounts/:accountId", handle(async (req) => {
   return { ok: true };
 }));
 
+// ---------- intentional reels: what to ask him on camera (lib/intentional.js) ----------
+app.get("/api/intentional", handle(() => listQuestions()));
+app.post("/api/intentional/generate", handle(async (req) => ({ added: await generateQuestions({ count: Math.min(15, Math.max(3, Number(req.body?.count) || 8)), note: req.body?.note }), ...(await listQuestions()) })));
+app.patch("/api/intentional/:id", handle((req) => setQuestionStatus(req.params.id, req.body?.status)));
+app.delete("/api/intentional/:id", handle((req) => removeQuestion(req.params.id)));
+
 // ---------- who the clips are for (lib/audience.js) ----------
 const audienceUpload = multer({ dest: path.join(os.tmpdir(), "clipstudio-audience"), limits: { fileSize: 40 * 1024 * 1024 } });
 
@@ -1045,8 +1058,8 @@ app.post("/api/audience/sources", audienceUpload.single("file"), handle(async (r
   const note = String(req.body?.note || "").slice(0, 300);
   if (req.file) {
     const name = req.file.originalname;
-    if (!/\.(vtt|srt|txt|md|docx)$/i.test(name)) throw new Error("Use a transcript (.vtt, .srt, .txt) or a Word file (.docx).");
-    const brief = await ingestSource({ name, text: await readSourceAs(req.file.path, name), note });
+    if (!/\.(vtt|srt|txt|md|docx|pdf)$/i.test(name)) throw new Error("Use a transcript (.vtt, .srt, .txt), a Word file (.docx) or a PDF.");
+    const brief = await ingestSource({ name, ...(await readSourceAs(req.file.path, name)), note });
     return { brief, ...(await getAudience()) };
   }
   const text = String(req.body?.text || "");
@@ -1059,7 +1072,7 @@ async function readSourceAs(tmpPath, originalName) {
   const withExt = `${tmpPath}${path.extname(originalName).toLowerCase()}`;
   await fs.rename(tmpPath, withExt);
   try {
-    return await readSource(withExt);
+    return await readSourceParts(withExt);
   } finally {
     await fs.rm(withExt, { force: true });
   }
@@ -1127,6 +1140,31 @@ async function openingWords(project, item) {
     return null;
   }
 }
+
+/**
+ * Rewrite the headline and posting copy on a video's clips (or one clip), from the words each clip plays. The cuts
+ * and ranges stay as they are; a clip that is already rendered needs re-rendering for the new headline to show.
+ */
+app.post("/api/projects/:id/clips/retitle", withProject(async (req, project) => {
+  if (!hasClaudeKey()) throw new Error("Add your Claude key to rewrite titles.");
+  const only = typeof req.body.clipId === "string" ? [findClip(project, req.body.clipId)] : project.clips || [];
+  if (!only.length) throw new Error("This video has no clips yet.");
+  const note = String(req.body.note || "").slice(0, 300);
+  const words = await projectWords(project);
+  const done = [];
+  for (const clip of only) {
+    try {
+      const fresh = await retitleClip({ project, clip, words, note });
+      const before = clip.title;
+      Object.assign(clip, fresh);
+      done.push({ id: clip.id, before, after: clip.title });
+    } catch (err) {
+      console.error(`[${project.id}/${clip.id}] retitle`, err.message);
+    }
+  }
+  await saveProject(project);
+  return { rewritten: done, clips: project.clips };
+}));
 
 // ---------- re-pick: fresh clips with the current engine ----------
 
@@ -1522,6 +1560,6 @@ await editsPlanner.start(); // clears planning jobs interrupted by a restart
 startChannelWatch(importChannelVideo);
 
 app.listen(PORT, () => {
-  console.log(`\n  HBA Clips → http://localhost:${PORT}`);
+  console.log(`\n  HBA Content Backend → http://localhost:${PORT}`);
   console.log(`  Clip analysis: ${hasClaudeKey() ? "Claude (claude-opus-5)" : "demo heuristic — add ANTHROPIC_API_KEY to .env for Claude"}\n`);
 });

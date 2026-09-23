@@ -1,4 +1,4 @@
-// Standalone preview of the Integrations page on :5192 (HBA Clips itself runs on :5173).
+// Standalone preview of the Integrations page on :5192 (HBA Content Backend itself runs on :5173).
 // It keeps its own ledger in data/integrations/dev so it never writes over the studio's.
 import path from "node:path";
 import { fileURLToPath } from "node:url";

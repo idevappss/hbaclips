@@ -524,5 +524,12 @@
       "addedAt": "2026-09-15T19:14:36.011Z"
     }
   ],
-  "avoid": []
+  "avoid": [
+    {
+      "title": "Stripe Holds Back Your Money",
+      "kind": "hook",
+      "source": "app",
+      "addedAt": "2026-09-22T18:37:20.707Z"
+    }
+  ]
 }

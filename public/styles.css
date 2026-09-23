@@ -979,3 +979,14 @@ body > main { margin: 0 auto; }
 .aud-detail em { font-style: normal; }
 .aud-sources { margin: 0; font-size: 12.5px; }
 .aud-status { margin: 0; color: var(--text-2); font-size: 13px; }
+
+/* ---------- intentional reels (lib/intentional.js) ---------- */
+.reels-top { display: flex; flex-direction: column; gap: 18px; margin-bottom: 20px; padding: 22px 24px; }
+.reel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+.reel-card { display: flex; flex-direction: column; gap: 12px; padding: 20px; }
+.reel-q { margin: 0; font-size: 17px; line-height: 1.35; letter-spacing: -0.01em; }
+.reel-follow { margin: 0; color: var(--text-2); font-size: 13.5px; line-height: 1.5; }
+.reel-meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 0; font-size: 13px; line-height: 1.5; }
+.reel-meta dt { color: var(--faint); }
+.reel-meta dd { margin: 0; color: var(--text-2); }
+.reel-card .clip-actions { padding-top: 4px; }
